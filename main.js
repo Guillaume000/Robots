@@ -1,8 +1,11 @@
-var funnyBot = new Robot("Funnybot");
-var robotChien = new Robot("Robotchien");
+var armeeRobots = [
+    funnyBot = new Robot("Funnybot"),
+    robotChien = new Robot("Robotchien"),
+    genialO = new Robot("GénialO"),
+    mechaStreisand = new Robot("MechaStreisand")
+];
 
-//console.log(funnyBot);
-//console.log(robotChien);
+for(var x = 0; x < armeeRobots.length; x++) {
+    armeeRobots[x].introduce();
+}
 
-funnyBot.introduce();
-robotChien.introduce();
