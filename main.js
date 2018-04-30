@@ -1,9 +1,6 @@
-var robot = new Robot("RoboTest");
+var funnyBot = new Robot("Funnybot");
+var robotChien = new Robot("Robotchien");
 
-console.log(robot);
-console.log(robot.name);
-console.log(robot.lifePoints);
-console.log(robot.mobility);
-console.log(robot.positionX);
-console.log(robot.positionY);
+console.log(funnyBot);
+console.log(robotChien);
 
