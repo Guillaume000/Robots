@@ -10,3 +10,5 @@ for(var x = 0; x < armeeRobots.length; x++) {
     armeeRobots[x].move();
     armeeRobots[x].introduce();
 }
+
+armeeRobots[0].seDeplacerAleatoirement(2);

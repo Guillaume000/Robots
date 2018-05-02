@@ -79,6 +79,12 @@ class Robot {
                 this.position[1] = 0;
             }
         }
+
+        this.seDeplacerAleatoirement = function(nombreDeplacement) {
+            for(var x = 0; x < nombreDeplacement; x++) {
+                this.move();
+            }
+        }
     }
 }
 
