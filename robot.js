@@ -10,12 +10,12 @@ class Robot {
         }
 
         this.move = function() {
+            var droite = prompt("Allez à droite ? (1 à 3 cases)");
+            var bas = prompt("Allez en bas ? (1 à 3 cases)");
+            var gauche = prompt("Allez à gauche ? (1 à 3 cases)");
+            var haut = prompt("Allez en haut ? (1 à 3 cases)");
 
-            var walkX = prompt("Entrez un nombre pour le déplaçement horizontal (1 à 3 cases)");
-
-            var walkY = prompt("Entrez un nombre pour le déplaçement vertical (1 à 3 cases)");
-
-            switch(walkX) {
+            switch(droite) {
                 case "1":
                     this.position[0] = this.position[0] + 1;
                     break;
@@ -26,10 +26,10 @@ class Robot {
                     this.position[0] = this.position[0] + 3;
                     break;
                 default:
-                    console.log("erreur");
+                    console.log(this.name + " ne veut pas aller à droite");
             }
 
-            switch(walkY) {
+            switch(bas) {
                 case "1":
                     this.position[1] = this.position[1] + 1;
                     break;
@@ -40,7 +40,43 @@ class Robot {
                     this.position[1] = this.position[1] + 3;
                     break;
                 default:
-                    console.log("erreur");
+                    console.log(this.name + " ne veut pas aller en bas");
+            }
+
+            switch(gauche) {
+                case "1":
+                    this.position[0] = this.position[0] - 1;
+                    break;
+                case "2":
+                    this.position[0] = this.position[0] - 2;
+                    break;
+                case "3":
+                    this.position[0] = this.position[0] - 3;
+                    break;
+                default:
+                    console.log(this.name + " ne veut pas aller à gauche");
+            }
+
+            switch(haut) {
+                case "1":
+                    this.position[1] = this.position[1] - 1;
+                    break;
+                case "2":
+                    this.position[1] = this.position[1] - 2;
+                    break;
+                case "3":
+                    this.position[1] = this.position[1] - 3;
+                    break;
+                default:
+                    console.log(this.name + " ne veut pas aller en haut");
+            }
+
+            if(this.position[0] < 0) {
+                this.position[0] = 0;
+            }
+
+            if(this.position[1] < 0) {
+                this.position[1] = 0;
             }
         }
     }
