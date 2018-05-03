@@ -27,35 +27,23 @@ class Robot {
             }
 
             if(droite <= this.mobility) {
-                this.position[0] = droite;
+                this.position[0] = this.position[0] + parseInt(droite);
+                console.log(this.position[0]);
             }
 
             if(bas <= this.mobility) {
-                this.position[1] = bas;
+                this.position[1] = this.position[1] + parseInt(bas);
+                console.log(this.position[1]);
             }
 
             if(gauche <= this.mobility) {
-                this.position[0] = this.position[0] - gauche;
+                this.position[0] = this.position[0] - parseInt(gauche);
+                console.log(this.position[0]);
             }
 
             if(haut <= this.mobility) {
-                this.position[1] = this.position[1] - haut;
-            }
-
-            if(droite > this.mobility) {
-                this.position[0] = this.mobility;
-            }
-
-            if(bas > this.mobility) {
-                this.position[1] = this.mobility;
-            }
-
-            if(gauche > this.mobility) {
-                this.position[0] = - this.mobility;
-            }
-
-            if(haut > this.mobility) {
-                this.position[1] = - this.mobility;
+                this.position[1] = this.position[1] - parseInt(haut);
+                console.log(this.position[1]);
             }
 
             if(this.position[0] < 0) {
@@ -70,6 +58,7 @@ class Robot {
         this.seDeplacerAleatoirement = function(nombreDeplacement) {
             for(var x = 0; x < nombreDeplacement; x++) {
                 this.move();
+                this.introduce();
             }
         }
     }
