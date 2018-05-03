@@ -15,60 +15,36 @@ class Robot {
             var gauche = prompt("Allez à gauche ? (1 à 3 cases)");
             var haut = prompt("Allez en haut ? (1 à 3 cases)");
 
-            switch(droite) {
-                case "1":
-                    this.position[0] = this.position[0] + 1;
-                    break;
-                case "2":
-                    this.position[0] = this.position[0] + 2;
-                    break;
-                case "3":
-                    this.position[0] = this.position[0] + 3;
-                    break;
-                default:
-                    console.log(this.name + " ne veut pas aller à droite");
+            if(droite <= this.mobility) {
+                this.position[0] = droite;
             }
 
-            switch(bas) {
-                case "1":
-                    this.position[1] = this.position[1] + 1;
-                    break;
-                case "2":
-                    this.position[1] = this.position[1] + 2;
-                    break;
-                case "3":
-                    this.position[1] = this.position[1] + 3;
-                    break;
-                default:
-                    console.log(this.name + " ne veut pas aller en bas");
+            if(bas <= this.mobility) {
+                this.position[1] = bas;
             }
 
-            switch(gauche) {
-                case "1":
-                    this.position[0] = this.position[0] - 1;
-                    break;
-                case "2":
-                    this.position[0] = this.position[0] - 2;
-                    break;
-                case "3":
-                    this.position[0] = this.position[0] - 3;
-                    break;
-                default:
-                    console.log(this.name + " ne veut pas aller à gauche");
+            if(gauche <= this.mobility) {
+                this.position[0] = this.position[0] - gauche;
             }
 
-            switch(haut) {
-                case "1":
-                    this.position[1] = this.position[1] - 1;
-                    break;
-                case "2":
-                    this.position[1] = this.position[1] - 2;
-                    break;
-                case "3":
-                    this.position[1] = this.position[1] - 3;
-                    break;
-                default:
-                    console.log(this.name + " ne veut pas aller en haut");
+            if(haut <= this.mobility) {
+                this.position[1] = this.position[1] - haut;
+            }
+
+            if(droite > this.mobility) {
+                this.position[0] = this.mobility;
+            }
+
+            if(bas > this.mobility) {
+                this.position[1] = this.mobility;
+            }
+
+            if(gauche > this.mobility) {
+                this.position[0] = - this.mobility;
+            }
+
+            if(haut > this.mobility) {
+                this.position[1] = - this.mobility;
             }
 
             if(this.position[0] < 0) {
