@@ -1,8 +1,8 @@
 var armeeRobots = [
-    funnyBot = new Robot("Funnybot"),
-    robotChien = new Robot("Robotchien"),
-    genialO = new Robot("GénialO"),
-    mechaStreisand = new Robot("MechaStreisand")
+    funnyBot = new Robot("Funnybot", 100, 4, [0, 0]),
+    robotChien = new Robot("Robotchien", 150, 5, [6, 4]),
+    genialO = new Robot("GénialO", 300, 2, [7, 0]),
+    mechaStreisand = new Robot("MechaStreisand", 80, 1, [2, 9])
 ];
 
 for(var x = 0; x < armeeRobots.length; x++) {

@@ -1,19 +1,30 @@
 class Robot {
     constructor(name, lifePoints, mobility, position) {
         this.name = name;
-        this.lifePoints = 100;
-        this.mobility = 3;
-        this.position = [0, 0];
+        this.lifePoints = lifePoints;
+        this.mobility = mobility;
+        this.position = position;
 
         this.introduce = function() {
-            console.log("Bonjour, je m'appelle " + this.name + ". J'ai " + this.lifePoints + " points de vie et je me déplace à " + this.mobility + " cases par seconde. " + "Je suis à la case de coordonnées (" + this.position + ").");
+            if(this.mobility == 1) {
+                console.log("Bonjour, je m'appelle " + this.name + ". J'ai " + this.lifePoints + " points de vie et je me déplace à " + this.mobility + " case par seconde. " + "Je suis à la case de coordonnées (" + this.position + ").");
+            } else {
+                console.log("Bonjour, je m'appelle " + this.name + ". J'ai " + this.lifePoints + " points de vie et je me déplace à " + this.mobility + " cases par seconde. " + "Je suis à la case de coordonnées (" + this.position + ").");
+            }
         }
 
         this.move = function() {
-            var droite = prompt("Allez à droite ? (1 à 3 cases)");
-            var bas = prompt("Allez en bas ? (1 à 3 cases)");
-            var gauche = prompt("Allez à gauche ? (1 à 3 cases)");
-            var haut = prompt("Allez en haut ? (1 à 3 cases)");
+            if(this.mobility == 1) {
+                var droite = prompt("Allez à droite ? (" + this.mobility + " case maximum)");
+                var bas = prompt("Allez en bas ? (" + this.mobility + " case maximum)");
+                var gauche = prompt("Allez à gauche ? (" + this.mobility + " case maximum)");
+                var haut = prompt("Allez en haut ? (" + this.mobility + " case maximum)");
+            } else {
+                var droite = prompt("Allez à droite ? (" + this.mobility + " cases maximum)");
+                var bas = prompt("Allez en bas ? (" + this.mobility + " cases maximum)");
+                var gauche = prompt("Allez à gauche ? (" + this.mobility + " cases maximum)");
+                var haut = prompt("Allez en haut ? (" + this.mobility + " cases maximum)");
+            }
 
             if(droite <= this.mobility) {
                 this.position[0] = droite;
