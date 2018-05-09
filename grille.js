@@ -19,23 +19,10 @@ class Grille {
     }
 
     afficheRobot() {
-        for(var x = 1; x < 5; x++) {
-            $("#case-" + this.robot.position.a + this.robot.position.b).addClass('robot' + x);
-        }
+        $("#case-" + this.robot.position.a + this.robot.position.b).addClass('robot1');
 
         //console.log(this.robot.position.a);
         //console.log(this.robot.position.b);
     }
 
 }
-
-    /*var grid = [];
-    for(var i = 0; i < width; i++) {
-        grid[i] = [];
-        $('#board').append('<div class="row" id="row-' + i + '">');
-        for(var j = 0; j < height; j++) {
-            grid[i][j] = new Cell(i, j);
-            $('#row-' + i).append('<div class="cell" id="cell-' + i + '-' + j + '">' + '</div>');
-        }
-        $('.row').append('</div>');
-    }*/
