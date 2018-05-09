@@ -1,23 +1,33 @@
+var plateau = new Grille({largeur: 10, hauteur: 10});
+
 var armeeRobots = [
-    funnyBot = new Robot("Funnybot", 100, 4, {x: 5, y: 3}, false),
-    robotChien = new Robot("Robotchien", 150, 5, {x: 6, y: 4}, false),
-    genialO = new Robot("GénialO", 300, 2, {x: 7, y: 0}, false),
-    mechaStreisand = new Robot("MechaStreisand", 80, 1, {x: 2, y: 9}, false)
+    funnyBot = new Robot("Funnybot", 100, 4, {a: 3, b: 5}),
+    robotChien = new Robot("Robotchien", 150, 5, {a: 6, b: 4}),
+    genialO = new Robot("GénialO", 300, 2, {a: 7, b: 0}),
+    mechaStreisand = new Robot("MechaStreisand", 80, 1, {a: 2, b: 9})
 ];
 
 var armeeMechants = [
-    mechant1 = new Mechant("Méchant1", 300, 2, {x: 2, y: 8}, 10, true),
-    mechant2 = new Mechant("Méchant2", 200, 4, {x: 7, y: 1}, 50, false)
+    mechant1 = new Mechant("Méchant1", 300, 2, {a: 2, b: 8}, 10, true),
+    mechant2 = new Mechant("Méchant2", 200, 4, {a: 7, b: 1}, 50, false)
 ];
 
-/*for(var x = 0; x < armeeRobots.length; x++) {
-    armeeRobots[x].introduce();
+plateau.creerGrille();
+
+for(var x = 0; x < armeeRobots.length; x++) {
+    /*armeeRobots[x].introduce();
     armeeRobots[x].move();
-    armeeRobots[x].introduce();
-}*/
+    armeeRobots[x].introduce();*/
+    //this.grille.robot = armeeRobots[x];
+    plateau = armeeRobots[x];
+    console.log(plateau);
+}
+
+plateau.afficheRobot();
+
 
 //armeeRobots[0].seDeplacerAleatoirement(1);
-funnyBot.introduce();
+//funnyBot.introduce();
 //mechant1.introduce();
 //funnyBot.move();
 //funnyBot.introduce();
