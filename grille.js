@@ -1,7 +1,6 @@
 class Grille {
-    constructor(grille, robot) {
+    constructor(grille) {
         this.grille = grille;
-        this.robot = robot;
     }
 
     creerGrille() {
@@ -17,12 +16,4 @@ class Grille {
         }
         //console.table(grid);
     }
-
-    afficheRobot() {
-        $("#case-" + this.robot.position.a + this.robot.position.b).addClass('robot1');
-
-        //console.log(this.robot.position.a);
-        //console.log(this.robot.position.b);
-    }
-
 }

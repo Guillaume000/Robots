@@ -1,10 +1,9 @@
 class Robot {
-    constructor(name, lifePoints, mobility, position, picture) {
+    constructor(name, lifePoints, mobility, position) {
         this.name = name;
         this.lifePoints = lifePoints;
         this.mobility = mobility;
         this.position = position;
-        this.picture = picture;
     }
 
     introduce() {
@@ -18,14 +17,14 @@ class Robot {
     move() {
         if(this.mobility == 1) {
             var bas = prompt("Allez en bas ? (" + this.mobility + " case maximum)");
-            /*var bas = prompt("Allez en bas ? (" + this.mobility + " case maximum)");
-            var gauche = prompt("Allez à gauche ? (" + this.mobility + " case maximum)");
-            var haut = prompt("Allez en haut ? (" + this.mobility + " case maximum)");*/
+            var droite = prompt("Allez à droite ? (" + this.mobility + " case maximum)");
+            var haut = prompt("Allez à haut ? (" + this.mobility + " case maximum)");
+            var gauche = prompt("Allez en gauche ? (" + this.mobility + " case maximum)");
         } else {
             var bas = prompt("Allez en bas ? (" + this.mobility + " cases maximum)");
-            /*var bas = prompt("Allez en bas ? (" + this.mobility + " cases maximum)");
-            var gauche = prompt("Allez à gauche ? (" + this.mobility + " cases maximum)");
-            var haut = prompt("Allez en haut ? (" + this.mobility + " cases maximum)");*/
+            var droite = prompt("Allez à droite ? (" + this.mobility + " cases maximum)");
+            var haut = prompt("Allez à haut ? (" + this.mobility + " cases maximum)");
+            var gauche = prompt("Allez en gauche ? (" + this.mobility + " cases maximum)");
         }
 
 
@@ -34,20 +33,20 @@ class Robot {
             //console.log(this.position.a);
         }
 
-        /*if(bas != undefined && bas <= this.mobility) {
-            this.position.b = this.position.b + parseInt(bas);
+        if(droite != undefined && droite <= this.mobility) {
+            this.position.b = this.position.b + parseInt(droite);
             //console.log(this.position.b);
-        }
-
-        if(gauche != undefined && gauche <= this.mobility) {
-            this.position.a = this.position.a - parseInt(gauche);
-            //console.log(this.position.a);
         }
 
         if(haut != undefined && haut <= this.mobility) {
-            this.position.b = this.position.b - parseInt(haut);
+            this.position.a = this.position.a - parseInt(haut);
+            //console.log(this.position.a);
+        }
+
+        if(gauche != undefined && gauche <= this.mobility) {
+            this.position.b = this.position.b - parseInt(gauche);
             //console.log(this.position.b);
-        }*/
+        }
 
         /*if(this.position[0] == -1) {
             this.position[0] = 9;
