@@ -1,16 +1,17 @@
 class Robot {
-    constructor(name, lifePoints, mobility, position) {
+    constructor(name, lifePoints, mobility, position, weapon) {
         this.name = name;
         this.lifePoints = lifePoints;
         this.mobility = mobility;
         this.position = position;
+        this.weapon = weapon;
     }
 
     introduce() {
         if(this.mobility == 1) {
-            console.log("Bonjour, je m'appelle " + this.name + ". J'ai " + this.lifePoints + " points de vie et je me déplace à " + this.mobility + " case par seconde. " + "Je suis à la case de coordonnées (" + this.position.a + "," + this.position.b + ").");
+            console.log("Bonjour, je m'appelle " + this.name + ". J'ai " + this.lifePoints + " points de vie et je me déplace à " + this.mobility + " case par seconde. " + "Je suis à la case de coordonnées (" + this.position.a + "," + this.position.b + "), j'ai une arme qui s'appelle" + this.weapon.weaponName);
         } else {
-            console.log("Bonjour, je m'appelle " + this.name + ". J'ai " + this.lifePoints + " points de vie et je me déplace à " + this.mobility + " cases par seconde. " + "Je suis à la case de coordonnées (" + this.position.a + "," + this.position.b + ").");
+            console.log("Bonjour, je m'appelle " + this.name + ". J'ai " + this.lifePoints + " points de vie et je me déplace à " + this.mobility + " cases par seconde. " + "Je suis à la case de coordonnées (" + this.position.a + "," + this.position.b + "), j'ai une arme qui s'appelle " + this.weapon.weaponName);
         }
     }
 

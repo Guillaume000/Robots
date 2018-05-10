@@ -1,0 +1,58 @@
+.plateau {
+    border: solid black 1px;
+    text-align: center;
+    width: 100%;
+    height: auto;
+}
+
+.case {
+    border: solid black 1px;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+}
+
+.robot0 {
+    background-image: url(../images/robot0.png);
+    background-repeat: no-repeat;
+}
+
+.robot1 {
+    background-image: url(../images/robot1.png);
+    background-repeat: no-repeat;
+}
+
+.robot2 {
+    background-image: url(../images/robot2.png);
+    background-repeat: no-repeat;
+}
+
+.robot3 {
+    background-image: url(../images/robot3.png);
+    background-repeat: no-repeat;
+}
+
+.wall {
+    background-image: url(../images/wall.png);
+    background-repeat: no-repeat;
+}
+
+.remote {
+    background-image: url(../images/remote.png);
+    background-repeat: no-repeat;
+}
+
+.newspaper {
+    background-image: url(../images/newspaper.png);
+    background-repeat: no-repeat;
+}
+
+.broom {
+    background-image: url(../images/broom.png);
+    background-repeat: no-repeat;
+}
+
+.keyboard {
+    background-image: url(../images/keyboard.png);
+    background-repeat: no-repeat;
+}
