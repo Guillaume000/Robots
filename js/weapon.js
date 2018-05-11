@@ -1,7 +1,8 @@
 class Weapon {
-    constructor(weaponName, attackPoints) {
+    constructor(weaponName, attackPoints, position) {
         this.weaponName = weaponName;
         this.attackPoints = attackPoints;
+        this.position = position;
     }
 
     weaponDescription() {

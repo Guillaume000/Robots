@@ -37,22 +37,22 @@
     background-repeat: no-repeat;
 }
 
-.remote {
+.weapon0 {
     background-image: url(../images/remote.png);
     background-repeat: no-repeat;
 }
 
-.newspaper {
+.weapon1 {
     background-image: url(../images/newspaper.png);
     background-repeat: no-repeat;
 }
 
-.broom {
+.weapon2 {
     background-image: url(../images/broom.png);
     background-repeat: no-repeat;
 }
 
-.keyboard {
+.weapon3 {
     background-image: url(../images/keyboard.png);
     background-repeat: no-repeat;
 }
