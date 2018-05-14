@@ -22,16 +22,6 @@
     background-repeat: no-repeat;
 }
 
-.robot2 {
-    background-image: url(../images/robot2.png);
-    background-repeat: no-repeat;
-}
-
-.robot3 {
-    background-image: url(../images/robot3.png);
-    background-repeat: no-repeat;
-}
-
 .wall {
     background-image: url(../images/wall.png);
     background-repeat: no-repeat;
@@ -54,5 +44,10 @@
 
 .weapon3 {
     background-image: url(../images/keyboard.png);
+    background-repeat: no-repeat;
+}
+
+.weapon4 {
+    background-image: url(../images/fist.png);
     background-repeat: no-repeat;
 }

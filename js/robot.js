@@ -1,10 +1,10 @@
 class Robot {
-    constructor(name, lifePoints, mobility, position, weapon) {
+    constructor(name, lifePoints, mobility, weapon, position) {
         this.name = name;
         this.lifePoints = lifePoints;
         this.mobility = mobility;
-        this.position = position;
         this.weapon = weapon;
+        this.position = position;
     }
 
     introduce() {
@@ -17,50 +17,32 @@ class Robot {
 
     move() {
         if(this.mobility == 1) {
-            var bas = prompt("Allez en bas ? (" + this.mobility + " case maximum)");
-            var droite = prompt("Allez à droite ? (" + this.mobility + " case maximum)");
-            var haut = prompt("Allez à haut ? (" + this.mobility + " case maximum)");
-            var gauche = prompt("Allez en gauche ? (" + this.mobility + " case maximum)");
+            var down = prompt("Allez en bas ? (" + this.mobility + " case maximum)");
+            var right = prompt("Allez à droite ? (" + this.mobility + " case maximum)");
+            var up = prompt("Allez en haut ? (" + this.mobility + " case maximum)");
+            var left = prompt("Allez à gauche ? (" + this.mobility + " case maximum)");
         } else {
-            var bas = prompt("Allez en bas ? (" + this.mobility + " cases maximum)");
-            var droite = prompt("Allez à droite ? (" + this.mobility + " cases maximum)");
-            var haut = prompt("Allez à haut ? (" + this.mobility + " cases maximum)");
-            var gauche = prompt("Allez en gauche ? (" + this.mobility + " cases maximum)");
+            var down = prompt("Allez en bas ? (" + this.mobility + " cases maximum)");
+            var right = prompt("Allez à droite ? (" + this.mobility + " cases maximum)");
+            var up = prompt("Allez en haut ? (" + this.mobility + " cases maximum)");
+            var left = prompt("Allez à gauche ? (" + this.mobility + " cases maximum)");
         }
 
-
-        if(bas != undefined && bas <= this.mobility) {
-            this.position.a = this.position.a + parseInt(bas);
-            //console.log(this.position.a);
+        if(down != undefined && down <= this.mobility) {
+            this.position.a = this.position.a + parseInt(down);
         }
 
-        if(droite != undefined && droite <= this.mobility) {
-            this.position.b = this.position.b + parseInt(droite);
-            //console.log(this.position.b);
+        if(right != undefined && right <= this.mobility) {
+            this.position.b = this.position.b + parseInt(right);
         }
 
-        if(haut != undefined && haut <= this.mobility) {
-            this.position.a = this.position.a - parseInt(haut);
-            //console.log(this.position.a);
+        if(up != undefined && up <= this.mobility) {
+            this.position.a = this.position.a - parseInt(up);
         }
 
-        if(gauche != undefined && gauche <= this.mobility) {
-            this.position.b = this.position.b - parseInt(gauche);
-            //console.log(this.position.b);
+        if(left != undefined && left <= this.mobility) {
+            this.position.b = this.position.b - parseInt(left);
         }
-
-        /*if(this.position[0] == -1) {
-            this.position[0] = 9;
-        }
-
-        if(this.position[1] == -1) {
-            this.position[1] = 9;
-        }
-
-        if(this.position[1] == 10) {
-            this.position[0] = this.position[0] + 1;
-            this.position[1] = 0;
-        }*/
 
         if(this.position.a < 0) {
             this.position.a = 0;

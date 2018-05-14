@@ -1,11 +1,11 @@
 class Weapon {
-    constructor(weaponName, attackPoints, position) {
+    constructor(weaponName, power, position) {
         this.weaponName = weaponName;
-        this.attackPoints = attackPoints;
+        this.power = power;
         this.position = position;
     }
 
     weaponDescription() {
-        console.log("Bonjour, mon nom est " + this.weaponName + " et j'inflige " + this.attackPoints + " points de dégâts");
+        console.log("Bonjour, mon nom est " + this.weaponName + " et j'inflige " + this.power + " points de dégâts");
     }
 }
