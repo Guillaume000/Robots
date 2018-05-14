@@ -9,10 +9,10 @@ class Grid {
 
     createGrid() {
         var grid = [];
-        for(var a = 0; a < this.size.hauteur; a++) {
+        for(var a = 0; a < this.size.height; a++) {
             grid[a] = [];
-            $('.plateau').append('<div class="row" id="row-' + a + '">');
-            for(var b = 0; b < this.size.largeur; b++) {
+            $('.board').append('<div class="row" id="row-' + a + '">');
+            for(var b = 0; b < this.size.width; b++) {
                 $('#row-' + a).append('<div class="case" id="case-' + a + b + '">');
             }
         }
@@ -38,7 +38,7 @@ class Grid {
         }
 
         while(gridElements.length < configElements) {
-            var chanceIndex = Math.floor(Math.random() * (this.size.largeur * this.size.hauteur));
+            var chanceIndex = Math.floor(Math.random() * (this.size.width * this.size.height));
 
             if(!this.occupiedCells.includes(chanceIndex)) {
                 this.occupiedCells.push(chanceIndex);
