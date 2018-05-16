@@ -51,3 +51,7 @@
     background-image: url(../images/fist.png);
     background-repeat: no-repeat;
 }
+
+.mobility {
+    background-color: firebrick;
+}

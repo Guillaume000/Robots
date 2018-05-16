@@ -11,8 +11,8 @@ class Config {
             {name: "Clavier", power: 60}
         ];
         this.robotsNames = [
-            {name: "Funnybot", lifePoints: 100, mobility: 3, weapon: "Poings", power: 10},
-            {name: "GénialO", lifePoints: 100, mobility: 3, weapon: "Poings", power: 10}
+            {name: "Joueur 1", lifePoints: 100, mobility: 3, weapon: "Poings", power: 10},
+            {name: "Joueur 2", lifePoints: 100, mobility: 3, weapon: "Poings", power: 10}
         ];
     }
 }

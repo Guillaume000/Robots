@@ -66,7 +66,7 @@ class Grid {
 
                 if(elements === "robots") {
                     var robotElement = config.robotsNames[this.robots.length];
-                    var gridObject = new Robot(robotElement.name, robotElement.lifePoints, robotElement.weapon, robotElement.power, {a: chanceIndex[0], b: chanceIndex[1]});
+                    var gridObject = new Robot(robotElement.name, robotElement.lifePoints, robotElement.mobility, robotElement.weapon, robotElement.power, {a: parseInt(chanceIndex[0]), b: parseInt(chanceIndex[1])});
                     gridElements.push(gridObject);
                     $("#case-" + gridObject.position.a + gridObject.position.b).addClass('robot' + (this.robots.length -1));
                 }
