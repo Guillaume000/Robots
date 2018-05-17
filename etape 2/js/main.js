@@ -7,6 +7,7 @@ board.populateGridWith("robot");
 var player1 = board.robots[0];
 var player2 = board.robots[1];
 var wallsPosition = board.walls;
+var weaponsPosition = board.weapons;
 //turn est = à true pour le player1 et à false pour le player2
 var turn = false;
 var victoryCondition = false;
@@ -49,10 +50,13 @@ $("#endTurn").click(function(){
                             console.log("ne doit pas passer");
                         }
                     }
+                    for(var j = 0; j < board.weapons.length; j++) {
+                        if((player1.position.a == weaponsPosition[j].position.a) && (player1.position.b == weaponsPosition[j].position.b)) {
+                            //$("#case-" + player1.position.a + player1.position.b).off();
+                            console.log("doit prendre l'arme et laisser la sienne en partant");
+                        }
+                    }
                 $("#case-" + player1.position.a + player1.position.b).addClass('robot0');
-                //Si le personnage arrive sur une case avec une arme, il prend l'arme et laisse la sienne sur place
-                //Si le personnage veut se déplacer à travers un mur ou un autre personnage, il s'arrête devant
-                //Si le personnage arrive à côté de l'autre personnage le combat commence
             });
         });
     }

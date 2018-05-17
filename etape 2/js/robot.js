@@ -13,10 +13,29 @@ class Robot {
     }
 
     move() {
-        var down = prompt("Allez en bas ? (" + this.mobility + " cases maximum)");
-        var right = prompt("Allez à droite ? (" + this.mobility + " cases maximum)");
-        var up = prompt("Allez en haut ? (" + this.mobility + " cases maximum)");
-        var left = prompt("Allez à gauche ? (" + this.mobility + " cases maximum)");
+        //Déplaçement par click
+        /*for(var x = 0; x < this.mobility + 1; x++) {
+            $("#case-" + (this.position.a + x) + this.position.b).click(function(){
+                var down = $(this).toggleClass('robot0');
+                console.log(down);
+            });    
+        }*/
+        
+        var walk = prompt("Quelle direction ? (bas, droite, haut, gauche)");
+        switch(walk) {
+            case "bas":
+                var down = prompt("Allez en bas ? (" + this.mobility + " cases maximum)");
+                break;
+            case "droite":
+                var right = prompt("Allez à droite ? (" + this.mobility + " cases maximum)");
+                break;
+            case "haut":
+                var up = prompt("Allez en haut ? (" + this.mobility + " cases maximum)");
+                break;
+            case "gauche":
+                var left = prompt("Allez à gauche ? (" + this.mobility + " cases maximum)");
+                break;
+        }
         
         if(down != undefined && down <= this.mobility) {
             this.position.a = this.position.a + parseInt(down);
