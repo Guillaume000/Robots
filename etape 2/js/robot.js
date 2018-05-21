@@ -21,6 +21,10 @@ class Robot {
             });    
         }*/
         
+        var player1 = board.robots[0];
+        var player2 = board.robots[1];
+        var wallsPosition = board.walls;
+        
         var walk = prompt("Quelle direction ? (bas, droite, haut, gauche)");
         switch(walk) {
             case "bas":
@@ -69,6 +73,54 @@ class Robot {
         if(this.position.b > 9) {
             this.position.b = 9;
         }
+        
+        //console.log(player1.position.a);
+        //console.log(player1.position.b);
+        for(var i = 0; i < board.walls.length; i++) {
+            
+            //console.log(this.position.a == (parseInt(wallsPosition[i].position.a) + 1));
+            /*if(this.position.a == (parseInt(wallsPosition[i].position.a) + 1)) {
+                this.position.a = this.position.a - 2;
+                console.log("+2");
+            }*/
+
+            //console.log(wallsPosition[i].position.b);
+            
+            //Si la position de mon personnage est == à celle de n'importe quel mur Alors
+            if((this.position.a == wallsPosition[i].position.a) && (this.position.b == wallsPosition[i].position.b)) {
+                //Si mon personnage vient du haut de 1 case, il avance et recule de 1 case
+                /*if(this.position.a > this.position.a - 1) {
+                    this.position.a = this.position.a - 1;
+                    console.log("vient du haut et retourne en bas");
+                }*/
+                console.log("ok sur le mur");
+            }
+            
+            //Si la position de mon personnage est == à celle de n'importe quel mur + 1
+            if((this.position.a == (parseInt(wallsPosition[i].position.a) + 1)) && (this.position.b == wallsPosition[i].position.b)) {
+                console.log("ok en bas du mur");
+                //Si mon personnage veut aller vers le mur, reste sur place
+            }
+            
+            //Si la position de mon personnage est == à celle de n'importe quel mur - 1
+            if((this.position.a == (parseInt(wallsPosition[i].position.a) - 1)) && (this.position.b == wallsPosition[i].position.b)) {
+                console.log("ok en haut du mur");
+                //Si mon personnage veut aller vers le mur, reste sur place
+            }
+            
+            //Si la position de mon personnage est == à celle de n'importe quel mur + 1
+            if((this.position.a == wallsPosition[i].position.a) && (this.position.b == parseInt(wallsPosition[i].position.b) + 1)) {
+                console.log("ok à droite du mur");
+                //Si mon personnage veut aller vers le mur, reste sur place
+            }
+            
+            //Si la position de mon personnage est == à celle de n'importe quel mur + 1
+            if((this.position.a == wallsPosition[i].position.a) && (this.position.b == parseInt(wallsPosition[i].position.b) - 1)) {
+                console.log("ok à gauche du mur");
+                //Si mon personnage veut aller vers le mur, reste sur place
+            }
+        }
+        
     }
 }
 

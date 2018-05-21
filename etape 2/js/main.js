@@ -44,18 +44,17 @@ $("#endTurn").click(function(){
                 }
                 $("#case-" + player1.position.a + player1.position.b).removeClass('robot0');
                 player1.move();
-                    for(var i = 0; i < board.walls.length; i++) {
+                    /*for(var i = 0; i < board.walls.length; i++) {
                         if((player1.position.a == wallsPosition[i].position.a) && (player1.position.b == wallsPosition[i].position.b)) {
-                            //$("#case-" + player1.position.a + player1.position.b).off();
                             console.log("ne doit pas passer");
                         }
-                    }
-                    for(var j = 0; j < board.weapons.length; j++) {
+                    }*/
+                    /*for(var j = 0; j < board.weapons.length; j++) {
                         if((player1.position.a == weaponsPosition[j].position.a) && (player1.position.b == weaponsPosition[j].position.b)) {
                             //$("#case-" + player1.position.a + player1.position.b).off();
                             console.log("doit prendre l'arme et laisser la sienne en partant");
                         }
-                    }
+                    }*/
                 $("#case-" + player1.position.a + player1.position.b).addClass('robot0');
             });
         });
