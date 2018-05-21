@@ -6,121 +6,81 @@ class Robot {
         this.weapon = weapon;
         this.power = power;
         this.position = position;
+        this.availableMoves = {top : true , left : true, right: true, bottom: true };
+
     }
 
     introduce() {
         console.log("Bonjour, je m'appelle " + this.name + ". J'ai " + this.lifePoints + " points de vie et je me déplace à " + this.mobility + " cases par seconde. " + "Je suis à la case de coordonnées (" + this.position.a + "," + this.position.b + "), j'ai une arme qui s'appelle " + this.weapon.weaponName);
     }
 
-    move() {
-        //Déplaçement par click
-        /*for(var x = 0; x < this.mobility + 1; x++) {
-            $("#case-" + (this.position.a + x) + this.position.b).click(function(){
-                var down = $(this).toggleClass('robot0');
-                console.log(down);
-            });    
-        }*/
+    move(board) {
+        for(var x = 1; x < this.mobility + 1; x++) {
+            $("#case-" + (this.position.a + x) + this.position.b).toggleClass("mobility");
+            $("#case-" + (this.position.a - x) + this.position.b).toggleClass("mobility");
+            $("#case-" + this.position.a + (this.position.b + x)).toggleClass("mobility");
+            $("#case-" + this.position.a + (this.position.b - x)).toggleClass("mobility");
+            //Mettre des animations entrée / sortie
+        }
+        for(var x = 1; x < this.mobility + 1; x++) {
+            this.checkAvailableMove({x: (this.position.a + x), y: this.position.b}, "bottom");
+            this.checkAvailableMove({x: (this.position.a - x), y: this.position.b}, "top");
+            this.checkAvailableMove({x: (this.position.a), y: this.position.b + x}, "right");
+            this.checkAvailableMove({x: (this.position.a), y: this.position.b - x}, "left");
+            //Mettre des animations entrée / sortie
+        }
+    }
+    
+    checkAvailableMove(position, direction){
+        var self = this;
+        var elem = $("#case-" + position.x + position.y);
+        var classes = elem.attr("class");
+        if(classes === undefined) {
+            classes = classes ? classes.split(' ').slice(-1)[0] : '';
+        }
+        var classes_arr = classes.split(" ");
         
-        var player1 = board.robots[0];
-        var player2 = board.robots[1];
-        var wallsPosition = board.walls;
-        
-        var walk = prompt("Quelle direction ? (bas, droite, haut, gauche)");
-        switch(walk) {
-            case "bas":
-                var down = prompt("Allez en bas ? (" + this.mobility + " cases maximum)");
-                break;
-            case "droite":
-                var right = prompt("Allez à droite ? (" + this.mobility + " cases maximum)");
-                break;
-            case "haut":
-                var up = prompt("Allez en haut ? (" + this.mobility + " cases maximum)");
-                break;
-            case "gauche":
-                var left = prompt("Allez à gauche ? (" + this.mobility + " cases maximum)");
-                break;
-        }
-        
-        if(down != undefined && down <= this.mobility) {
-            this.position.a = this.position.a + parseInt(down);
-        }
+        classes_arr.forEach(function(classe){
 
-        if(right != undefined && right <= this.mobility) {
-            this.position.b = this.position.b + parseInt(right);
-        }
+            switch (direction){
 
-        if(up != undefined && up <= this.mobility) {
-            this.position.a = this.position.a - parseInt(up);
-        }
+                case "right":
+                    if (self.availableMoves.right){
+                        if (classe == "wall" || classe == "robot0" || classe == "robot1"){
+                            self.availableMoves.right = false;
+                            elem.toggleClass("mobility");
+                        } 
+                    }
+                    break;
 
-        if(left != undefined && left <= this.mobility) {
-            this.position.b = this.position.b - parseInt(left);
-        }
+                case "bottom":
+                    if (self.availableMoves.bottom){
+                        if (classe == "wall" || classe == "robot0" || classe == "robot1"){
+                            self.availableMoves.bottom = false;
+                            elem.toggleClass("mobility");
+                        } 
+                    }
+                    break;
 
-        // Pour ne pas sortir nos robots de la grille
-        if(this.position.a < 0) {
-            this.position.a = 0;
-        }
+                case "left":
+                    if (self.availableMoves.left){
+                        if (classe == "wall" || classe == "robot0" || classe == "robot1"){
+                            self.availableMoves.left = false;
+                            elem.toggleClass("mobility");
+                        }
+                    }
+                    break;
 
-        if(this.position.b < 0) {
-            this.position.b = 0;
-        }
-        
-        if(this.position.a > 9) {
-            this.position.a = 9;
-        }
-
-        if(this.position.b > 9) {
-            this.position.b = 9;
-        }
-        
-        //console.log(player1.position.a);
-        //console.log(player1.position.b);
-        for(var i = 0; i < board.walls.length; i++) {
-            
-            //console.log(this.position.a == (parseInt(wallsPosition[i].position.a) + 1));
-            /*if(this.position.a == (parseInt(wallsPosition[i].position.a) + 1)) {
-                this.position.a = this.position.a - 2;
-                console.log("+2");
-            }*/
-
-            //console.log(wallsPosition[i].position.b);
-            
-            //Si la position de mon personnage est == à celle de n'importe quel mur Alors
-            if((this.position.a == wallsPosition[i].position.a) && (this.position.b == wallsPosition[i].position.b)) {
-                //Si mon personnage vient du haut de 1 case, il avance et recule de 1 case
-                /*if(this.position.a > this.position.a - 1) {
-                    this.position.a = this.position.a - 1;
-                    console.log("vient du haut et retourne en bas");
-                }*/
-                console.log("ok sur le mur");
+                case "top":
+                    if (self.availableMoves.top){
+                        if (classe == "wall" || classe == "robot0" || classe == "robot1"){
+                            self.availableMoves.top = false;
+                            elem.toggleClass("mobility");
+                        } 
+                    }
+                    break;
             }
-            
-            //Si la position de mon personnage est == à celle de n'importe quel mur + 1
-            if((this.position.a == (parseInt(wallsPosition[i].position.a) + 1)) && (this.position.b == wallsPosition[i].position.b)) {
-                console.log("ok en bas du mur");
-                //Si mon personnage veut aller vers le mur, reste sur place
-            }
-            
-            //Si la position de mon personnage est == à celle de n'importe quel mur - 1
-            if((this.position.a == (parseInt(wallsPosition[i].position.a) - 1)) && (this.position.b == wallsPosition[i].position.b)) {
-                console.log("ok en haut du mur");
-                //Si mon personnage veut aller vers le mur, reste sur place
-            }
-            
-            //Si la position de mon personnage est == à celle de n'importe quel mur + 1
-            if((this.position.a == wallsPosition[i].position.a) && (this.position.b == parseInt(wallsPosition[i].position.b) + 1)) {
-                console.log("ok à droite du mur");
-                //Si mon personnage veut aller vers le mur, reste sur place
-            }
-            
-            //Si la position de mon personnage est == à celle de n'importe quel mur + 1
-            if((this.position.a == wallsPosition[i].position.a) && (this.position.b == parseInt(wallsPosition[i].position.b) - 1)) {
-                console.log("ok à gauche du mur");
-                //Si mon personnage veut aller vers le mur, reste sur place
-            }
-        }
-        
+        });
     }
 }
 
