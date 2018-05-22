@@ -48,7 +48,9 @@ class Robot {
                     if (self.availableMoves.right){
                         if (classe == "wall" || classe == "robot0" || classe == "robot1"){
                             self.availableMoves.right = false;
-                            elem.toggleClass("mobility");
+                            for(var i = 0; i < 3; i++) {
+                                $("#case-" + position.x + (position.y + i)).removeClass('mobility');
+                            }
                         } 
                     }
                     break;
@@ -57,7 +59,9 @@ class Robot {
                     if (self.availableMoves.bottom){
                         if (classe == "wall" || classe == "robot0" || classe == "robot1"){
                             self.availableMoves.bottom = false;
-                            elem.toggleClass("mobility");
+                            for(var i = 0; i < 3; i++) {
+                                $("#case-" + (position.x + i) + position.y).removeClass('mobility');
+                            }
                         } 
                     }
                     break;
@@ -66,7 +70,9 @@ class Robot {
                     if (self.availableMoves.left){
                         if (classe == "wall" || classe == "robot0" || classe == "robot1"){
                             self.availableMoves.left = false;
-                            elem.toggleClass("mobility");
+                            for(var i = 0; i < 3; i++) {
+                                $("#case-" + position.x + (position.y - i)).removeClass('mobility');
+                            }
                         }
                     }
                     break;
@@ -75,7 +81,9 @@ class Robot {
                     if (self.availableMoves.top){
                         if (classe == "wall" || classe == "robot0" || classe == "robot1"){
                             self.availableMoves.top = false;
-                            elem.toggleClass("mobility");
+                            for(var i = 0; i < 3; i++) {
+                                $("#case-" + (position.x - i) + position.y).removeClass('mobility');
+                            }
                         } 
                     }
                     break;
