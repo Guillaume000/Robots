@@ -22,13 +22,38 @@ class Robot {
             $("#case-" + this.position.a + (this.position.b - x)).toggleClass("mobility");
             //Mettre des animations entrée / sortie
         }
+        
         for(var x = 1; x < this.mobility + 1; x++) {
             this.checkAvailableMove({x: (this.position.a + x), y: this.position.b}, "bottom");
             this.checkAvailableMove({x: (this.position.a - x), y: this.position.b}, "top");
             this.checkAvailableMove({x: (this.position.a), y: this.position.b + x}, "right");
             this.checkAvailableMove({x: (this.position.a), y: this.position.b - x}, "left");
-            //Mettre des animations entrée / sortie
         }
+        // Déplacement par .click
+        $("#case-" + (this.position.a + 1) + this.position.b).click(function() {
+            $("#case-" + (player1.position.a + 1) + player1.position.b).off();
+            console.log("en bas");
+            $("#case-" + player1.position.a + player1.position.b).removeClass("robot0");
+            for(var p = 0; p < player1.mobility + 1; p++) {
+                $("#case-" + (player1.position.a + p) + player1.position.b).removeClass("mobility");
+                $("#case-" + (player1.position.a - p) + player1.position.b).removeClass("mobility");
+                $("#case-" + player1.position.a + (player1.position.b + p)).removeClass("mobility");
+                $("#case-" + player1.position.a + (player1.position.b - p)).removeClass("mobility");
+                //Mettre des animations entrée / sortie
+            }
+            $("#case-" + (player1.position.a + 1) + player1.position.b).addClass("robot0").removeClass('mobility');
+            player1.position.a = player1.position.a + 1;
+            console.log(player1.position);
+        });
+        $("#case-" + (this.position.a - 1) + this.position.b).click(function() {
+            console.log("en haut");
+        });
+        $("#case-" + this.position.a + (this.position.b + 1)).click(function() {
+            console.log("à droite");
+        });
+        $("#case-" + this.position.a + (this.position.b - 1)).click(function() {
+            console.log("à gauche");
+        });
     }
     
     checkAvailableMove(position, direction){
