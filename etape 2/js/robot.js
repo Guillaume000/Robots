@@ -15,6 +15,7 @@ class Robot {
     }
 
     move(board) {
+        // Affiche les cases disponibles
         for(var x = 1; x < this.mobility + 1; x++) {
             $("#case-" + (this.position.a + x) + this.position.b).toggleClass("mobility");
             $("#case-" + (this.position.a - x) + this.position.b).toggleClass("mobility");
@@ -23,6 +24,7 @@ class Robot {
             //Mettre des animations entrée / sortie
         }
         
+        // Récupère les positions
         for(var x = 1; x < this.mobility + 1; x++) {
             this.checkAvailableMove({x: (this.position.a + x), y: this.position.b}, "bottom");
             this.checkAvailableMove({x: (this.position.a - x), y: this.position.b}, "top");
@@ -30,29 +32,91 @@ class Robot {
             this.checkAvailableMove({x: (this.position.a), y: this.position.b - x}, "left");
         }
         // Déplacement par .click
-        $("#case-" + (this.position.a + 1) + this.position.b).click(function() {
-            $("#case-" + (player1.position.a + 1) + player1.position.b).off();
-            console.log("en bas");
-            $("#case-" + player1.position.a + player1.position.b).removeClass("robot0");
-            for(var p = 0; p < player1.mobility + 1; p++) {
-                $("#case-" + (player1.position.a + p) + player1.position.b).removeClass("mobility");
-                $("#case-" + (player1.position.a - p) + player1.position.b).removeClass("mobility");
-                $("#case-" + player1.position.a + (player1.position.b + p)).removeClass("mobility");
-                $("#case-" + player1.position.a + (player1.position.b - p)).removeClass("mobility");
+        var positionA = this.position.a;
+        var positionB = this.position.b;
+        
+        // Déplaçement vers le bas
+        $("#case-" + (positionA + 1) + positionB).click(function() {
+            $("#case-" + (positionA + 1) + positionB).off();
+            for(var p = 0; p < 4; p++) {
+                $("#case-" + (positionA + p) + positionB).removeClass("mobility");
+                $("#case-" + (positionA - p) + positionB).removeClass("mobility");
+                $("#case-" + positionA + (positionB + p)).removeClass("mobility");
+                $("#case-" + positionA + (positionB - p)).removeClass("mobility");
                 //Mettre des animations entrée / sortie
             }
-            $("#case-" + (player1.position.a + 1) + player1.position.b).addClass("robot0").removeClass('mobility');
-            player1.position.a = player1.position.a + 1;
-            console.log(player1.position);
+            if(turn == true) {
+                $("#case-" + positionA + positionB).removeClass("robot0");
+                $("#case-" + (positionA + 1) + positionB).addClass("robot0").removeClass('mobility');
+                player1.position.a = positionA + 1;
+            } else {
+                $("#case-" + positionA + positionB).removeClass("robot1");
+                $("#case-" + (positionA + 1) + positionB).addClass("robot1").removeClass('mobility');
+                player2.position.a = positionA + 1;
+            }
         });
-        $("#case-" + (this.position.a - 1) + this.position.b).click(function() {
-            console.log("en haut");
+        
+        // Déplaçement vers le haut
+        $("#case-" + (positionA - 1) + positionB).click(function() {
+            $("#case-" + (positionA - 1) + positionB).off();
+            for(var p = 0; p < 4; p++) {
+                $("#case-" + (positionA + p) + positionB).removeClass("mobility");
+                $("#case-" + (positionA - p) + positionB).removeClass("mobility");
+                $("#case-" + positionA + (positionB + p)).removeClass("mobility");
+                $("#case-" + positionA + (positionB - p)).removeClass("mobility");
+                //Mettre des animations entrée / sortie
+            }
+            if(turn == true) {
+                $("#case-" + positionA + positionB).removeClass("robot0");
+                $("#case-" + (positionA - 1) + positionB).addClass("robot0").removeClass('mobility');
+                player1.position.a = positionA - 1;
+            } else {
+                $("#case-" + positionA + positionB).removeClass("robot1");
+                $("#case-" + (positionA - 1) + positionB).addClass("robot1").removeClass('mobility');
+                player2.position.a = positionA - 1;
+            }
         });
-        $("#case-" + this.position.a + (this.position.b + 1)).click(function() {
-            console.log("à droite");
+        
+        // Déplaçement vers la droite
+        $("#case-" + positionA + (positionB + 1)).click(function() {
+            $("#case-" + positionA + (positionB + 1)).off();
+            for(var p = 0; p < 4; p++) {
+                $("#case-" + (positionA + p) + positionB).removeClass("mobility");
+                $("#case-" + (positionA - p) + positionB).removeClass("mobility");
+                $("#case-" + positionA + (positionB + p)).removeClass("mobility");
+                $("#case-" + positionA + (positionB - p)).removeClass("mobility");
+                //Mettre des animations entrée / sortie
+            }
+            if(turn == true) {
+                $("#case-" + positionA + positionB).removeClass("robot0");
+                $("#case-" + positionA + (positionB + 1)).addClass("robot0").removeClass('mobility');
+                player1.position.b = positionB + 1;
+            } else {
+                $("#case-" + positionA + positionB).removeClass("robot1");
+                $("#case-" + positionA + (positionB + 1)).addClass("robot1").removeClass('mobility');
+                player2.position.b = positionB + 1;
+            }
         });
-        $("#case-" + this.position.a + (this.position.b - 1)).click(function() {
-            console.log("à gauche");
+        
+        // Déplaçement vers la gauche
+        $("#case-" + positionA + (positionB - 1)).click(function() {
+            $("#case-" + positionA + (positionB - 1)).off();
+            for(var p = 0; p < 4; p++) {
+                $("#case-" + (positionA + p) + positionB).removeClass("mobility");
+                $("#case-" + (positionA - p) + positionB).removeClass("mobility");
+                $("#case-" + positionA + (positionB + p)).removeClass("mobility");
+                $("#case-" + positionA + (positionB - p)).removeClass("mobility");
+                //Mettre des animations entrée / sortie
+            }
+            if(turn == true) {
+                $("#case-" + positionA + positionB).removeClass("robot0");
+                $("#case-" + positionA + (positionB - 1)).addClass("robot0").removeClass('mobility');
+                player1.position.b = positionB - 1;
+            } else {
+                $("#case-" + positionA + positionB).removeClass("robot1");
+                $("#case-" + positionA + (positionB - 1)).addClass("robot1").removeClass('mobility');
+                player2.position.b = positionB - 1;
+            }
         });
     }
     
@@ -87,7 +151,7 @@ class Robot {
                             for(var i = 0; i < 3; i++) {
                                 $("#case-" + (position.x + i) + position.y).removeClass('mobility');
                             }
-                        } 
+                        }
                     }
                     break;
 

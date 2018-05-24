@@ -51,6 +51,7 @@ $("#endTurn").click(function(){
     }
     
     $("#case-" + player1.position.a + player1.position.b).removeClass('mobility');
+    $("#case-" + player2.position.a + player2.position.b).removeClass('mobility');
 });
 
 // Conditions de victoire = lifePoints à 0
