@@ -16,7 +16,7 @@ class Robot {
 
     move(board) {
         // Affiche les cases disponibles
-        for(var x = 1; x < this.mobility + 1; x++) {
+        /*for(var x = 1; x < this.mobility + 1; x++) {
             $("#case-" + (this.position.a + x) + this.position.b).toggleClass("mobility");
             $("#case-" + (this.position.a - x) + this.position.b).toggleClass("mobility");
             $("#case-" + this.position.a + (this.position.b + x)).toggleClass("mobility");
@@ -117,10 +117,10 @@ class Robot {
                 $("#case-" + positionA + (positionB - 1)).addClass("robot1").removeClass('mobility');
                 player2.position.b = positionB - 1;
             }
-        });
+        });*/
     }
     
-    checkAvailableMove(position, direction){
+    /*checkAvailableMove(position, direction){
         var self = this;
         var elem = $("#case-" + position.x + position.y);
         var classes = elem.attr("class");
@@ -178,7 +178,7 @@ class Robot {
                     break;
             }
         });
-    }
+    }*/
 }
 
 
