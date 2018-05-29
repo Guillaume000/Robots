@@ -73,23 +73,29 @@ class Grid {
             }
         }
     }
+    
     setAvailableMoves(gridElement){
         //Pour chaque direction regarder les mouvements disponibles
         if(gridElement !== undefined) {
             var elementClasses = gridElement.attr("class");
-            if(gridElement === undefined || gridElement.hasClass("wall") || gridElement.hasClass("robot0") || gridElement.hasClass("robot1")) {
-                if(gridElement === undefined) {
-                    console.log("GridElement is undefined");
-                } else {
-                    console.log(elementClasses);
-                }
+            if(gridElement.hasClass("wall") || gridElement.hasClass("robot0") || gridElement.hasClass("robot1")) {
                 return false;
             } else {
                 gridElement.addClass("mobility");
+                //Quand on clique sur une case verte, on change la position du joueur
+                gridElement.click(function() {
+                    //Le .click est limité à un (l'erreur c'est que c'est un .click par case)
+                    gridElement.off();
+                    //Je récupère la position de mon élément cliqué
+                    actualPlayer.position = gridElement.attr("id");
+                    console.log(actualPlayer.position);
+                    //J'essaie d'afficher le résultat
+                    gridElement.addClass("robot0").removeClass("mobility");
+                });
+                return true;
             }
         }
     }
-        
         
     setMobilityWithDirection(direction, player) {
         switch (direction) {
@@ -99,37 +105,45 @@ class Grid {
                     var gridElement = $("#case-" + (player.position.a - i) + player.position.b);
                     //Si il y a un obstacle, les cases suivantes sont inaccessibles
                     if(!this.setAvailableMoves(gridElement)) {
+                        //Quand il y a un obstacle j'empêche le .click sur eux
+                        gridElement.off();
                         break;
                     }
                 }
+            //Je break ici aussi pour ne pas qu'il aille dans les autres cases
+            break;
             case "bottom":
                 for(var i = 1; i <= player.mobility; i++) {
                     //on récupère la case en bas
                     var gridElement = $("#case-" + (player.position.a + i) + player.position.b);
                     if(!this.setAvailableMoves(gridElement)) {
+                        gridElement.off();
                         break;
                     }
 
                 }
+            break;
             case "left":
                 for(var i = 1; i <= player.mobility; i++) {
                     //on récupère la case à gauche
                     var gridElement = $("#case-" + player.position.a + (player.position.b - i));
                     if(!this.setAvailableMoves(gridElement)) {
+                        gridElement.off();
                         break;
                     }
 
                 }
+            break;
             case "right":
                 for(var i = 1; i <= player.mobility; i++) {
                     //on récupère la case à droite
                     var gridElement = $("#case-" + player.position.a + (player.position.b + i));
                     if(!this.setAvailableMoves(gridElement)) {
+                        gridElement.off();
                         break;
                     }
                 }
+            break;
         }
-
-
     }
 }
