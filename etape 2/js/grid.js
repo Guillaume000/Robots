@@ -78,20 +78,28 @@ class Grid {
         //Pour chaque direction regarder les mouvements disponibles
         if(gridElement !== undefined) {
             var elementClasses = gridElement.attr("class");
+            var positionPlayer = $("#case-" + actualPlayer.position.a + actualPlayer.position.b);
             if(gridElement.hasClass("wall") || gridElement.hasClass("robot0") || gridElement.hasClass("robot1")) {
                 return false;
             } else {
                 gridElement.addClass("mobility");
-                //Quand on clique sur une case verte, on change la position du joueur
                 gridElement.click(function() {
-                    //Le .click est limité à un (l'erreur c'est que c'est un .click par case)
-                    gridElement.off();
-                    //Je récupère la position de mon élément cliqué
+                    for(var x = 1; x <= actualPlayer.mobility; x++) {
+                        $("#case-" + (actualPlayer.position.a - x) + actualPlayer.position.b).removeClass("mobility").off();
+                        $("#case-" + (actualPlayer.position.a + x) + actualPlayer.position.b).removeClass("mobility").off();
+                        $("#case-" + actualPlayer.position.a + (actualPlayer.position.b - x)).removeClass("mobility").off();
+                        $("#case-" + actualPlayer.position.a + (actualPlayer.position.b + x)).removeClass("mobility").off();
+                    }
                     actualPlayer.position = gridElement.attr("id");
-                    console.log(actualPlayer.position);
-                    //J'essaie d'afficher le résultat
-                    gridElement.addClass("robot0").removeClass("mobility");
-                });
+                    if(turn) {
+                        positionPlayer.removeClass("robot0");
+                        gridElement.addClass("robot0").removeClass("mobility");
+                    }
+                    if(turn == false) {
+                        positionPlayer.removeClass("robot1");
+                        gridElement.addClass("robot1").removeClass("mobility");    
+                    }
+                });    
                 return true;
             }
         }
