@@ -8,7 +8,8 @@ class Config {
             {name: "Télécommande", power: 20},
             {name: "Journal", power: 35},
             {name: "Balai", power: 50},
-            {name: "Clavier", power: 60}
+            {name: "Clavier", power: 60},
+            {name: "Poings", power: 10}
         ];
         this.robotsNames = [
             {name: "Joueur 1", lifePoints: 100, mobility: 3, weapon: "Poings", power: 10},

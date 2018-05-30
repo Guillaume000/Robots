@@ -74,11 +74,12 @@ class Grid {
         }
     }
     
-    setAvailableMoves(gridElement){
+    setAvailableMoves(gridElement) {
         //Pour chaque direction regarder les mouvements disponibles
         if(gridElement !== undefined) {
             var elementClasses = gridElement.attr("class");
             var positionPlayer = $("#case-" + actualPlayer.position.a + actualPlayer.position.b);
+            var actualWeapon = board.weapons[0];
             if(gridElement.hasClass("wall") || gridElement.hasClass("robot0") || gridElement.hasClass("robot1")) {
                 return false;
             } else {
@@ -90,14 +91,23 @@ class Grid {
                         $("#case-" + actualPlayer.position.a + (actualPlayer.position.b - x)).removeClass("mobility").off();
                         $("#case-" + actualPlayer.position.a + (actualPlayer.position.b + x)).removeClass("mobility").off();
                     }
-                    actualPlayer.position = gridElement.attr("id");
-                    if(turn) {
-                        positionPlayer.removeClass("robot0");
-                        gridElement.addClass("robot0").removeClass("mobility");
+                    for(var i = 0; i < board.weapons.length; i++) {
+                        if(gridElement.hasClass("weapon" + i)) {
+                            actualWeapon = board.weapons[i];
+                        }
                     }
-                    if(turn == false) {
+                    if(gridElement.hasClass("weapon0") || gridElement.hasClass("weapon1") || gridElement.hasClass("weapon2") || gridElement.hasClass("weapon3")) {
+                        actualPlayer.weapon = actualWeapon;
+                        console.log(actualPlayer.name + " a ramassé l'arme " + actualWeapon.weaponName);
+                    }
+                    actualPlayer.position = gridElement.attr("id");
+                    if(actualPlayer == board.robots[0]) {
+                        positionPlayer.removeClass("robot0");
+                        gridElement.addClass("robot0").removeClass("mobility weapon0 weapon1 weapon2 weapon3 weapon4");
+                    }
+                    if(actualPlayer == board.robots[1]) {
                         positionPlayer.removeClass("robot1");
-                        gridElement.addClass("robot1").removeClass("mobility");    
+                        gridElement.addClass("robot1").removeClass("mobility weapon0 weapon1 weapon2 weapon3 weapon4");
                     }
                 });    
                 return true;
