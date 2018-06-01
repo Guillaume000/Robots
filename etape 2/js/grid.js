@@ -109,6 +109,17 @@ class Grid {
                         positionPlayer.removeClass("robot1");
                         gridElement.addClass("robot1").removeClass("mobility weapon0 weapon1 weapon2 weapon3 weapon4");
                     }
+                    /*actualPlayer = board.robots[1];
+                    actualPlayer.move(board);*/
+                    if(actualPlayer == board.robots[0]) {
+                        actualPlayer = board.robots[1];
+                        actualPlayer.move(board);
+                        console.log(actualPlayer);
+                    } else {
+                        actualPlayer = board.robots[0];
+                        actualPlayer.move(board);
+                        console.log(actualPlayer);
+                    }
                 });    
                 return true;
             }
@@ -123,12 +134,10 @@ class Grid {
                     var gridElement = $("#case-" + (player.position.a - i) + player.position.b);
                     //Si il y a un obstacle, les cases suivantes sont inaccessibles
                     if(!this.setAvailableMoves(gridElement)) {
-                        //Quand il y a un obstacle j'empêche le .click sur eux
                         gridElement.off();
                         break;
                     }
                 }
-            //Je break ici aussi pour ne pas qu'il aille dans les autres cases
             break;
             case "bottom":
                 for(var i = 1; i <= player.mobility; i++) {
@@ -138,7 +147,6 @@ class Grid {
                         gridElement.off();
                         break;
                     }
-
                 }
             break;
             case "left":
@@ -149,7 +157,6 @@ class Grid {
                         gridElement.off();
                         break;
                     }
-
                 }
             break;
             case "right":
