@@ -1,17 +1,23 @@
-// Game.init
 var board = new Grid({width: 10, height: 10});
 board.createGrid();
 board.populateGridWith("wall");
 board.populateGridWith("weapon");
 board.populateGridWith("robot");
 
-// Game.launch
-//turn est = à true pour le player1 et à false pour le player2
-var turn = true;
 var victoryCondition = false;
 var actualPlayer = board.robots[0];
-    
+
 actualPlayer.move(board);
+
+function turn() {
+    console.log(actualPlayer.name + " a fini son tour");
+    if(actualPlayer == board.robots[0]) {
+        actualPlayer = board.robots[1];
+    } else {
+        actualPlayer = board.robots[0];
+    }
+    actualPlayer.move(board);
+}
 
 // Conditions de victoire = lifePoints à 0
 /*if((player1.lifePoints == 0) || (player2.lifePoints == 0)) {

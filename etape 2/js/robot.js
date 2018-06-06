@@ -4,19 +4,32 @@ class Robot {
         this.lifePoints = lifePoints;
         this.mobility = mobility;
         this.weapon = weapon;
-        this.power = power;
         this.position = position;
     }
 
-    introduce() {
-        console.log("Bonjour, je m'appelle " + this.name + ". J'ai " + this.lifePoints + " points de vie et je me déplace à " + this.mobility + " cases par seconde. " + "Je suis à la case de coordonnées (" + this.position.a + "," + this.position.b + "), j'ai une arme qui s'appelle " + this.weapon.weaponName);
-    }
-
     move(board) {
-        board.setMobilityWithDirection("top", actualPlayer);
-        board.setMobilityWithDirection("bottom", actualPlayer);
-        board.setMobilityWithDirection("left", actualPlayer);
-        board.setMobilityWithDirection("right", actualPlayer);
+        board.setMobilityWithDirection("top", this);
+        board.setMobilityWithDirection("bottom", this);
+        board.setMobilityWithDirection("left", this);
+        board.setMobilityWithDirection("right", this);
+        
+        $(".mobility").click(function() {
+            actualPlayer.checkWeapon();
+            $(".mobility").removeClass("mobility").off();
+            turn();
+        });
+    }
+    
+    checkWeapon() {
+        $.each(board.weapons, function(numberObject, objectSkills) {
+            console.log(objectSkills);
+            if($(".mobility").hasClass(objectSkills.classCSS)) {
+                $("." + objectSkills.classCSS).removeClass(objectSkills.classCSS).addClass(actualPlayer.weapon.classCSS);
+                console.log(actualPlayer.weapon);
+                actualPlayer.weapon = objectSkills;
+                console.log(actualPlayer.weapon);
+            }
+        });
     }
 }
 
