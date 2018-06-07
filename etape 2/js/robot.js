@@ -1,5 +1,5 @@
 class Robot {
-    constructor(name, lifePoints, mobility, weapon, power, position) {
+    constructor(name, lifePoints, mobility, weapon, position) {
         this.name = name;
         this.lifePoints = lifePoints;
         this.mobility = mobility;
@@ -22,15 +22,12 @@ class Robot {
     
     checkWeapon() {
         $.each(board.weapons, function(numberObject, objectSkills) {
-            console.log(objectSkills);
             if($(".mobility").hasClass(objectSkills.classCSS)) {
                 $("." + objectSkills.classCSS).removeClass(objectSkills.classCSS).addClass(actualPlayer.weapon.classCSS);
-                console.log(actualPlayer.weapon);
                 actualPlayer.weapon = objectSkills;
-                console.log(actualPlayer.weapon);
             }
         });
-    }
+     }
 }
 
 

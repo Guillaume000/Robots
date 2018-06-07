@@ -18,15 +18,3 @@ function turn() {
     }
     actualPlayer.move(board);
 }
-
-// Conditions de victoire = lifePoints à 0
-/*if((player1.lifePoints == 0) || (player2.lifePoints == 0)) {
-    victoryCondition = true;
-    if(victoryCondition == true) {
-        if(player1.lifePoints == 0) {
-            alert("Le " + player2.name + " a gagné !");
-        } else {
-            alert("Le " + player1.name + " a gagné !");
-        }
-    }
-}*/
