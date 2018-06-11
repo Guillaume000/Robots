@@ -1,0 +1,3 @@
+Etape 5 : on regarde si un robot n'est pas juste à côté
+    - pas à côté, fin du tour
+    - à côté, début du combat
