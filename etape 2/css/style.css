@@ -13,12 +13,12 @@
 }
 
 .robot0 {
-    background-image: url(../images/robot0.png);
+    background-image: url(../images/robot0.png) !important;
     background-repeat: no-repeat;
 }
 
 .robot1 {
-    background-image: url(../images/robot1.png);
+    background-image: url(../images/robot1.png) !important;
     background-repeat: no-repeat;
 }
 
