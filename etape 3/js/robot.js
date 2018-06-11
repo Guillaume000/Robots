@@ -17,6 +17,7 @@ class Robot {
         $(".mobility").click((e) => {
             this.changePosition(e.currentTarget);
             this.checkWeapon(e.currentTarget);
+            this.beginBattle();
             $(".mobility").removeClass("mobility").off();
             turn();
         });
@@ -41,6 +42,35 @@ class Robot {
                 return false;
             }
         });
+    }
+    
+    beginBattle() {
+        $.each(Config.robotsElements, (numberObject, objectSkills) => {
+            if(
+                $("#case-" + (this.position.a + 1) + this.position.b).hasClass(objectSkills.classCSS) ||
+                $("#case-" + (this.position.a - 1) + this.position.b).hasClass(objectSkills.classCSS) ||
+                $("#case-" + this.position.a + (this.position.b + 1)).hasClass(objectSkills.classCSS) ||
+                $("#case-" + this.position.a + (this.position.b - 1)).hasClass(objectSkills.classCSS)
+            ) {
+                alert("Début du combat");
+                board.robots[0].mobility = 0;
+                board.robots[1].mobility = 0;
+            }
+        });
+    }
+    
+    battle() {
+        // Une action par tour, choix entre attaque et défense
+        // Si attaque, adversaire.lifepoints - this.weapon.power
+        // Si défense, pour le prochain tour, adversaire.weapon.power divisé par 2
+        
+        var actionChoice = console.log("Que voulez-vous faire ?");
+        console.log("Attaquer avec " + this.weapon.name + " (" + this.weapon.power + " points de dégâts)");
+        console.log("Défendre (Réduit les dégâts de la prochaine attaque de 50%)");
+    }
+    
+    turnBattle() {
+        // Changer le tour des combattants
     }
 }
 

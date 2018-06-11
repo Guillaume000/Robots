@@ -16,5 +16,5 @@ function turn() {
     } else {
         actualPlayer = board.robots[0];
     }
-    actualPlayer.move(board);
+        actualPlayer.move(board);
 }
