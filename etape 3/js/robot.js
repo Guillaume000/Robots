@@ -61,16 +61,38 @@ class Robot {
     
     battle() {
         // Une action par tour, choix entre attaque et défense
-        // Si attaque, adversaire.lifepoints - this.weapon.power
-        // Si défense, pour le prochain tour, adversaire.weapon.power divisé par 2
-        
-        var actionChoice = console.log("Que voulez-vous faire ?");
-        console.log("Attaquer avec " + this.weapon.name + " (" + this.weapon.power + " points de dégâts)");
+        $(function () {
+            $("#actionChoice").dialog({
+                modal: true,
+                buttons: {
+                    Attaque: function () {
+                        actualPlayer.attack();
+                        $(this).dialog("close");
+                        turn();
+                    },
+                    Défense: function () {
+                        actualPlayer.protect();
+                        $(this).dialog("close");
+                        turn();
+                    }
+                }
+            });
+        });
+        console.log("Action de " + this.name);
+        console.log("Attaquer avec " + this.weapon.name + " (" + this.weapon.power + " points de dégâts) ou");
         console.log("Défendre (Réduit les dégâts de la prochaine attaque de 50%)");
     }
     
-    turnBattle() {
-        // Changer le tour des combattants
+    attack() {
+        console.log(this.name + " attaque avec l'arme " + this.weapon.name + " et inflige " + this.weapon.power + " points de dégâts");
+        nextPlayer.lifePoints = nextPlayer.lifePoints - this.weapon.power;
+        console.log("Il reste " + nextPlayer.lifePoints + " points de vie au " + nextPlayer.name);
+        victoryCondition();
+    }
+    
+    protect() {
+        console.log(this.name + " absorbera la moitié des dégâts infligés à la prochaine attaque");
+        nextPlayer.weapon.power = nextPlayer.weapon.power / 2;    
     }
 }
 
