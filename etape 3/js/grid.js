@@ -11,9 +11,9 @@ class Grid {
         var grid = [];
         for(var a = 0; a < this.size.height; a++) {
             grid[a] = [];
-            $('.board').append('<div class="row" id="row-' + a + '">');
+            $('.board').append(`<div class='row' id='row-${a}'>`);
             for(var b = 0; b < this.size.width; b++) {
-                $('#row-' + a).append('<div class="case" id="case-' + a + b + '">');
+                $(`#row-${a}`).append(`<div class='case' id='case-${a}${b}'>`);
             }
         }
     }
@@ -52,7 +52,7 @@ class Grid {
                 chanceIndex = ("" + chanceIndex).split("");
 
                 if(elements === "walls") {
-                    var gridObject = new Wall(true, {a: chanceIndex[0], b: chanceIndex[1]});
+                    var gridObject = new Wall({a: chanceIndex[0], b: chanceIndex[1]});
                     gridElements.push(gridObject);
                     $("#case-" + gridObject.position.a + gridObject.position.b).addClass('wall');
                 }

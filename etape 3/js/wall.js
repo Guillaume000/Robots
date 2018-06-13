@@ -1,6 +1,5 @@
 class Wall {
-    constructor(blocked, position) {
-        this.blocked = blocked;
+    constructor(position) {
         this.position = position;
     }
 }

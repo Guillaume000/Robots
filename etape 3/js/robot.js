@@ -38,7 +38,7 @@ class Robot {
                 $("#case-" + this.position.a + this.position.b).removeClass(objectSkills.classCSS);
                 $("#case-" + this.position.a + this.position.b).addClass(this.weapon.classCSS);
                 this.weapon = objectSkills;
-                console.log(this.name + " a équipé l'arme " + this.weapon.name);
+                console.log(`${this.name} a équipé l'arme ${this.weapon.name}`);
                 return false;
             }
         });
@@ -67,32 +67,35 @@ class Robot {
                 buttons: {
                     Attaque: function () {
                         actualPlayer.attack();
-                        $(this).dialog("close");
+                        //$(this).dialog("close");
                         turn();
                     },
                     Défense: function () {
                         actualPlayer.protect();
-                        $(this).dialog("close");
+                        //$(this).dialog("close");
                         turn();
                     }
                 }
             });
         });
-        console.log("Action de " + this.name);
-        console.log("Attaquer avec " + this.weapon.name + " (" + this.weapon.power + " points de dégâts) ou");
+        console.log(`Action de ${this.name}`);
+        console.log(`Attaquer avec ${this.weapon.name} ${this.weapon.power} points de dégâts ou`);
         console.log("Défendre (Réduit les dégâts de la prochaine attaque de 50%)");
     }
     
     attack() {
-        console.log(this.name + " attaque avec l'arme " + this.weapon.name + " et inflige " + this.weapon.power + " points de dégâts");
-        nextPlayer.lifePoints = nextPlayer.lifePoints - this.weapon.power;
-        console.log("Il reste " + nextPlayer.lifePoints + " points de vie au " + nextPlayer.name);
+        this.attackCalculation();
         victoryCondition();
     }
     
+    attackCalculation() {
+        console.log(`${this.name} attaque avec l'arme ${this.weapon.name} et inflige ${this.weapon.power} points de dégâts`);
+        nextPlayer.lifePoints = nextPlayer.lifePoints - this.weapon.power;
+        console.log(`Il reste ${nextPlayer.lifePoints} points de vie au ${nextPlayer.name}`);
+    }
+    
     protect() {
-        console.log(this.name + " absorbera la moitié des dégâts infligés à la prochaine attaque");
-        nextPlayer.weapon.power = nextPlayer.weapon.power / 2;    
+        console.log(`${this.name} absorbera la moitié des dégâts infligés à la prochaine attaque`);
     }
 }
 

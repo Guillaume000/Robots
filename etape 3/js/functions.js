@@ -1,5 +1,5 @@
 function turn() {
-    console.log(actualPlayer.name + " a fini son tour");
+    console.log(`${actualPlayer.name} a fini son tour`);
     moveTurn();
     actualPlayer.move(board);
     battleTurn();
@@ -23,7 +23,7 @@ function battleTurn() {
 
 function victoryCondition() {
     if(nextPlayer.lifePoints <= 0) {
-        alert(actualPlayer.name + " a gagné !");
+        alert(`${actualPlayer.name} a gagné !`);
         return false;
     }
 }
