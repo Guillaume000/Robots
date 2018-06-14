@@ -60,24 +60,24 @@ class Robot {
     }
     
     battle() {
-        $(function () {
+        $( () => {
             $("#actionChoice").dialog({
                 modal: true,
                 buttons: {
-                    Attaque: function () {
-                        actualPlayer.attack();
+                    Attaque: () => {
+                        this.attack();
                         turn();
                     },
-                    Défense: function () {
-                        actualPlayer.protect();
+                    Défense: () => {
+                        this.protect();
                         turn();
                     }
                 }
             });
         });
-        //console.log(`Action de ${this.name}`);
-        console.log(`Attaquer avec ${this.weapon.name} ${this.weapon.power} points de dégâts ou`);
-        //console.log("Défendre (Réduit les dégâts de la prochaine attaque de 50%)");
+        console.log(`Action de ${this.name}
+        Attaquer avec ${this.weapon.name} ${this.weapon.power} points de dégâts 
+        Défendre (Réduit les dégâts de la prochaine attaque de 50%)`);
     }
     
     attack() {
@@ -87,7 +87,7 @@ class Robot {
     
     attackCalculation() {
         //console.log(`${this.name} attaque avec l'arme ${this.weapon.name} et inflige ${this.weapon.power} points de dégâts`);
-        nextPlayer.lifePoints = nextPlayer.lifePoints - this.weapon.power;
+        nextPlayer.lifePoints = nextPlayer.lifePoints - this.weapon.power;    
         console.log(`Il reste ${nextPlayer.lifePoints} points de vie au ${nextPlayer.name}`);
     }
     
