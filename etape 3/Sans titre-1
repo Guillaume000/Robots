@@ -1,9 +1,9 @@
 Quand le combat commence, on bloque les déplacements                                                                        OK
 
 Chaque joueur agit à son tour et a le choix entre deux actions :
-    Attaquer (l'arme du joueur qui attaque va soustraire sa force aux points de vie de l'autre joueur)                      OK
-    Défendre (valable un tour, l'arme de l'adversaire va soustraire 50% de sa force aux points de vie de l'autre joueur)    
-    
+Attaquer (l'arme du joueur qui attaque va soustraire sa force aux points de vie de l'autre joueur)                      OK
+Défendre (valable un tour, l'arme de l'adversaire va soustraire 50% de sa force aux points de vie de l'autre joueur)    
+
 Si les points de vie d'un joueur tombent à 0 :
-    stop le jeu                                                                                                             OK
-    message qui indique le vainqueur                                                                                        OK
+stop le jeu                                                                                                             OK
+message qui indique le vainqueur                                                                                        OK
