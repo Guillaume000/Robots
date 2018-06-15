@@ -53,8 +53,8 @@ class Robot {
                 $("#case-" + this.position.a + (this.position.b - 1)).hasClass(objectSkills.classCSS)
             ) {
                 alert("Début du combat");
-                board.robots[0].mobility = 0;
-                board.robots[1].mobility = 0;
+                actualPlayer.mobility = 0;
+                nextPlayer.mobility = 0;
             }
         });
     }
@@ -86,14 +86,20 @@ class Robot {
     }
     
     attackCalculation() {
-        //console.log(`${this.name} attaque avec l'arme ${this.weapon.name} et inflige ${this.weapon.power} points de dégâts`);
-        nextPlayer.lifePoints = nextPlayer.lifePoints - this.weapon.power;    
+        console.log(`${this.name} attaque avec l'arme ${this.weapon.name} et inflige ${this.weapon.power} points de dégâts`);
+        if($(`.${nextPlayer.classCSS}`).hasClass("shield")) {
+            nextPlayer.lifePoints = nextPlayer.lifePoints - (this.weapon.power / 2);
+            $(`.${nextPlayer.classCSS}`).removeClass("shield");
+            console.log(`${nextPlayer.name} a absorbé ${this.weapon.power / 2}`);
+        } else {
+            nextPlayer.lifePoints = nextPlayer.lifePoints - this.weapon.power;      
+        }  
         console.log(`Il reste ${nextPlayer.lifePoints} points de vie au ${nextPlayer.name}`);
     }
     
     protect() {
-        //console.log(`${this.name} absorbera la moitié des dégâts infligés à la prochaine attaque`);
-        nextPlayer.weapon.power = nextPlayer.weapon.power / 2;
+        console.log(`${this.name} absorbera la moitié des dégâts infligés à la prochaine attaque`);
+        $(`.${this.classCSS}`).addClass("shield");
     }
 }
 
