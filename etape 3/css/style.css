@@ -12,6 +12,10 @@
     display: inline-block;
 }
 
+button.ui-button.ui-corner-all.ui-widget.ui-button-icon-only.ui-dialog-titlebar-close {
+    display: none;
+}
+
 .robot0 {
     background-image: url(../images/robot0.png) !important;
     background-repeat: no-repeat;

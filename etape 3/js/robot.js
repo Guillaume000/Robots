@@ -62,7 +62,6 @@ class Robot {
     battle() {
         $( () => {
             $("#actionChoice").dialog({
-                modal: true,
                 buttons: {
                     Attaque: () => {
                         this.attack();

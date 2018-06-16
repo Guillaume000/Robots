@@ -24,6 +24,19 @@ function battleTurn() {
 function victoryCondition() {
     if(nextPlayer.lifePoints <= 0) {
         alert(`${actualPlayer.name} a gagné !`);
-        return false;
+        newGame();
     }
+}
+
+function newGame() {
+    $("#newGame").dialog({
+        buttons: {
+            Oui: () => {
+                location.reload();
+            },
+            Non: () => {
+                $("#newGame").dialog("close");
+            }
+        }
+    });
 }
