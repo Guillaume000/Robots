@@ -3,12 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Robot Javascript</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
     <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet"/>
 </head>
-    <body>
-        <div class="board">
+    <body class="container-fluid">
+        <div class="player1 col-md-3"></div>
+        <div class="board col-md-6">
             <div id="actionChoice" title="Combat !" hidden>
                 <p>
                     Que voulez-vous faire ?
@@ -20,10 +23,11 @@
                 </p>
             </div>
         </div>
+        <div class="player2 col-md-3"></div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script src="js/config.js"></script>
-        <script src="js/functions.js"></script>
+        <script src="js/game.js"></script>
         <script src="js/grid.js"></script>
         <script src="js/wall.js"></script>
         <script src="js/weapon.js"></script>

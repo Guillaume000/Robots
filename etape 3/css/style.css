@@ -1,7 +1,15 @@
+body {
+    display: inline-flex;
+    width: 100%;
+}
+
+.player1, .player2 {
+    text-align: center;
+}
+
 .board {
     border: solid black 1px;
     text-align: center;
-    width: 100%;
     height: auto;
 }
 
