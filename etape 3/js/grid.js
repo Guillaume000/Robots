@@ -73,24 +73,6 @@ class Grid {
             }
         }
     }
-    
-    playerStatistic(player) {
-        if(player == this.robots[0]) {
-            $('.player1').append(`
-                <div class='row'>${this.robots[0].name}
-                <div class='row'>Points de vie : ${this.robots[0].lifePoints}
-                <div class='row'>Arme : ${this.robots[0].weapon.name}, ${this.robots[0].weapon.power} dégâts
-            `);
-        }
-        
-        if(player == this.robots[1]) {
-            $('.player2').append(`
-                <div class='row'>${this.robots[1].name}
-                <div class='row'>Points de vie : ${this.robots[1].lifePoints}
-                <div class='row'>Arme : ${this.robots[1].weapon.name}, ${this.robots[1].weapon.power} dégâts
-            `);    
-        }
-    }
         
     setMobilityWithDirection(direction, player) {
         switch (direction) {

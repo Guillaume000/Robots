@@ -33,7 +33,6 @@ class Game {
 
     battleTurn() {
         if(this.attackingCharacter.mobility == 0) {
-            this.board.playerStatistic(this.attackingCharacter);
             this.battle();
         }
     }
@@ -45,14 +44,14 @@ class Game {
                     buttons: {
                         Attaque: () => {
                             this.attackingCharacter.attack(this.defendingCharacter);
-                            this.board.playerStatistic(this.attackingCharacter);
+                            // TODO Actualiser les valeurs
                             $("#actionChoice").dialog("close");
                             this.victoryCondition();
                             this.turn();
                         },
                         Défense: () => {
                             this.attackingCharacter.protect();
-                            this.board.playerStatistic(this.attackingCharacter);
+                            // TODO Actualiser les valeurs
                             $("#actionChoice").dialog("close");
                             this.turn();
                         }
@@ -84,7 +83,17 @@ class Game {
             this.attackingCharacter.checkWeapon(e.currentTarget);
             this.beginBattle();
             $(".mobility").removeClass("mobility").off();
-            this.board.playerStatistic(this.attackingCharacter);
+            
+            var maVariable = 'foo';
+
+            $.ajax({
+                url: '../php/demo.php',
+                data: 'maVariable='+ maVariable,
+                success: function(reponse) {
+                    alert(reponse); // reponse contient l'affichage du fichier PHP (soit echo)
+                }
+            });
+            
             this.turn();
         });
     }
