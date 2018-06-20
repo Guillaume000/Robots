@@ -83,14 +83,29 @@ class Game {
             this.attackingCharacter.checkWeapon(e.currentTarget);
             this.beginBattle();
             $(".mobility").removeClass("mobility").off();
-            
-            var maVariable = 'foo';
 
+            // J'initialise le variable box
+            var box = $('#namePlayer1');
+
+            // Je définis ma requête ajax
             $.ajax({
+
+                // Adresse à laquelle la requête est envoyée
                 url: '../php/demo.php',
-                data: 'maVariable='+ maVariable,
-                success: function(reponse) {
-                    alert(reponse); // reponse contient l'affichage du fichier PHP (soit echo)
+                
+                // Le délai maximun en millisecondes de traitement de la demande
+                timeout: 4000,
+
+                // La fonction à apeller si la requête aboutie
+                success: function (data) {
+                    // Je charge les données dans box
+                    box.html(data);
+                },
+
+                // La fonction à appeler si la requête n'a pas abouti
+                error: function() {
+                    // J'affiche un message d'erreur
+                    box.html("Désolé, aucun résultat trouvé.");
                 }
             });
             

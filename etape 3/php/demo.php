@@ -1,1 +1,1 @@
-Il va faire beau sur <?= $_GET['maVariable'] ?>
+<?php echo $_GET['prenom']; ?>
