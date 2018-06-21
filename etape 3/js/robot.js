@@ -16,8 +16,8 @@ class Robot {
     }
     
     changePosition(target) {
-        var idTarget = target.id;
-        var newPosition = idTarget.split("case-");
+        const idTarget = target.id;
+        const newPosition = idTarget.split("case-");
         $("#case-" + this.position.a + this.position.b).removeClass(this.classCSS);
         this.position.a = parseInt(newPosition[1][0]);
         this.position.b = parseInt(newPosition[1][1]);
