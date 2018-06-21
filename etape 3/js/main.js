@@ -1,2 +1,2 @@
-var game = new Game();
+const game = new Game();
 game.startGame();
