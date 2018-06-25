@@ -1,25 +1,39 @@
 body {
-    display: inline-flex;
-    width: 100%;
+    background-color: #2B2D42;
 }
 
-.player1, .player2 {
+.container {
+    background-color: white;
+}
+
+.player1, .player2, .page-header {
     text-align: center;
+}
+
+.page-header {
+    margin: 0 20px;
+}
+
+.rules {
+    margin: 10px 0;
+}
+
+.deletePoint {
+    list-style: none;
 }
 
 .board {
-    border: solid black 1px;
-    text-align: center;
-    height: auto;
-}
+    border: solid black 4px;
+}    
 
 .case {
     border: solid black 1px;
     width: 50px;
     height: 50px;
+    background-position: center;
 }
 
-button.ui-button.ui-corner-all.ui-widget.ui-button-icon-only.ui-dialog-titlebar-close {
+.ui-dialog .ui-dialog-titlebar-close {
     display: none;
 }
 

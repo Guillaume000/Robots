@@ -18,10 +18,10 @@ class Robot {
     changePosition(target) {
         const idTarget = target.id;
         const newPosition = idTarget.split("case-");
-        $("#case-" + this.position.a + this.position.b).removeClass(this.classCSS);
+        $("#case-" + this.position.a + this.position.b).addClass('animated zoomOut').removeClass(this.classCSS + ' animated zoomIn zoomOut');
         this.position.a = parseInt(newPosition[1][0]);
         this.position.b = parseInt(newPosition[1][1]);
-        $("#case-" + this.position.a + this.position.b).addClass(this.classCSS);
+        $("#case-" + this.position.a + this.position.b).addClass(this.classCSS + (' animated zoomIn'));
     }
     
     checkWeapon(target) {

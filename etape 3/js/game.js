@@ -67,12 +67,15 @@ class Game {
 
     victoryCondition() {
         if(this.defendingCharacter.lifePoints <= 0) {
+            this.defendingCharacter.lifePoints = 0;
             alert(`${this.attackingCharacter.name} a gagné !`);
             this.newGame();
         }
     }
     
     startGame() {
+        this.board.updateStatistics(this.attackingCharacter);
+        this.board.updateStatistics(this.defendingCharacter);
         this.attackingCharacter.move(this.board);
         this.move();
     }
