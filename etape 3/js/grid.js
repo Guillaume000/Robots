@@ -11,9 +11,9 @@ class Grid {
         const grid = [];
         for(let a = 0; a < this.size.height; a++) {
             grid[a] = [];
-            $('.board').append(`<div class='row' id='row-${a}'>`);
+            $('.board').append(`<tr class='' id='row-${a}'>`);
             for(let b = 0; b < this.size.width; b++) {
-                $(`#row-${a}`).append(`<div class='case' id='case-${a}${b}'>`);
+                $(`#row-${a}`).append(`<td class='case' id='case-${a}${b}'>`);
             }
         }
     }
