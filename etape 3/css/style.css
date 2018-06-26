@@ -6,11 +6,13 @@ body {
     background-color: white;
 }
 
-.player1, .player2, .page-header {
+.player1, .player2 {
     text-align: center;
+    line-height: 35px;
 }
 
 .page-header {
+    text-align: center;
     margin: 0 20px;
 }
 
