@@ -83,7 +83,7 @@ class Game {
     move() {
         $(".mobility").click((e) => {
             this.attackingCharacter.changePosition(e.currentTarget);
-            this.attackingCharacter.checkWeapon(e.currentTarget);
+            this.attackingCharacter.checkWeapon(e.currentTarget); 
             this.beginBattle();
             $(".mobility").removeClass("mobility").off();
             this.board.updateStatistics(this.attackingCharacter);

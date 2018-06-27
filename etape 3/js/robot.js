@@ -30,7 +30,7 @@ class Robot {
                 $("#case-" + this.position.a + this.position.b).removeClass(objectSkills.classCSS);
                 $("#case-" + this.position.a + this.position.b).addClass(this.weapon.classCSS);
                 this.weapon = objectSkills;
-                console.log(`${this.name} a équipé l'arme ${this.weapon.name}`);
+                alert(`${this.name} a équipé l'arme ${this.weapon.name}`);
                 return false;
             }
         });
@@ -41,19 +41,19 @@ class Robot {
     }
     
     attackCalculation(target) {
-        console.log(`${this.name} attaque avec l'arme ${this.weapon.name} et inflige ${this.weapon.power} points de dégâts`);
+        alert(`${this.name} attaque avec l'arme ${this.weapon.name} et inflige ${this.weapon.power} points de dégâts`);
         if($(`.${target.classCSS}`).hasClass("shield")) {
             target.lifePoints = target.lifePoints - (this.weapon.power / 2);
             $(`.${target.classCSS}`).removeClass("shield");
-            console.log(`${target.name} a absorbé ${this.weapon.power / 2}`);
+            alert(`${target.name} a absorbé ${this.weapon.power / 2}`);
         } else {
             target.lifePoints = target.lifePoints - this.weapon.power;      
         }  
-        console.log(`Il reste ${target.lifePoints} points de vie au ${target.name}`);
+        alert(`Il reste ${target.lifePoints} points de vie au ${target.name}`);
     }
     
     protect() {
-        console.log(`${this.name} absorbera la moitié des dégâts infligés à la prochaine attaque`);
+        alert(`${this.name} absorbera la moitié des dégâts infligés à la prochaine attaque`);
         $(`.${this.classCSS}`).addClass("shield");
     }
 }
