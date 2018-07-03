@@ -14,7 +14,7 @@ class Game {
     }
     
     turn() {
-        console.log(`${this.attackingCharacter.name} a fini son tour`);
+        this.attackingCharacter.choosePlayer().append(`<p class="archivedMessage">${this.attackingCharacter.name} a terminé son tour</p>`);
         this.moveTurn();
         this.attackingCharacter.move(this.board);
         this.move();
@@ -39,28 +39,30 @@ class Game {
     
     battle() {
         if(this.attackingCharacter.lifePoints > 0 && this.defendingCharacter.lifePoints > 0) {
-            $( () => {
-                $("#actionChoice").dialog({
-                    buttons: {
-                        Attaque: () => {
-                            this.attackingCharacter.attack(this.defendingCharacter);
-                            this.board.updateStatistics(this.defendingCharacter);
-                            $("#actionChoice").dialog("close");
-                            this.victoryCondition();
-                            this.turn();
-                        },
-                        Défense: () => {
-                            this.attackingCharacter.protect();
-                            this.board.updateStatistics(this.attackingCharacter);
-                            $("#actionChoice").dialog("close");
-                            this.turn();
-                        }
+            $("#actionChoice").dialog({
+                text: 
+                    $("#actionChoice").html(`<p>Action de ${this.attackingCharacter.name} :</p>
+                    <p>- Attaquer avec ${this.attackingCharacter.weapon.name} ${this.attackingCharacter.weapon.power} points de dégâts</p> 
+                    <p>- Défendre (Réduit les dégâts de la prochaine attaque de 50%)</p>`),
+                buttons: {
+                    Attaque: () => {
+                        this.attackingCharacter.attack(this.defendingCharacter);
+                        this.board.updateStatistics(this.defendingCharacter);
+                        $("#actionChoice").dialog("close");
+                        this.victoryCondition();
+                        this.turn();
+                    },
+                    Défense: () => {
+                        this.attackingCharacter.protect();
+                        this.board.updateStatistics(this.attackingCharacter);
+                        $("#actionChoice").dialog("close");
+                        this.turn();
                     }
-                });
+                },
+                classes: {
+                    "ui-dialog": "attackAction"
+                }
             });
-            console.log(`Action de ${this.attackingCharacter.name}
-            Attaquer avec ${this.attackingCharacter.weapon.name} ${this.attackingCharacter.weapon.power} points de dégâts 
-            Défendre (Réduit les dégâts de la prochaine attaque de 50%)`);    
         }
     }
     
@@ -68,7 +70,13 @@ class Game {
     victoryCondition() {
         if(this.defendingCharacter.lifePoints <= 0) {
             this.defendingCharacter.lifePoints = 0;
-            alert(`${this.attackingCharacter.name} a gagné !`);
+            $("#informationMessage").dialog({
+                text: $("#informationMessage").html(`<p>${this.attackingCharacter.name} a gagné !</p>`),
+                classes: {
+                    "ui-dialog": "positionMessage"
+                }
+            });
+            setTimeout(this.hideDialog, 3000);
             this.newGame();
         }
     }
@@ -98,12 +106,22 @@ class Game {
                 $("#case-" + (this.attackingCharacter.position.a - 1) + this.attackingCharacter.position.b).hasClass(objectSkills.classCSS) ||
                 $("#case-" + this.attackingCharacter.position.a + (this.attackingCharacter.position.b + 1)).hasClass(objectSkills.classCSS) ||
                 $("#case-" + this.attackingCharacter.position.a + (this.attackingCharacter.position.b - 1)).hasClass(objectSkills.classCSS)
-            ) {
-                alert("Début du combat");
+            ) { 
+                $("#informationMessage").dialog({
+                    text: $("#informationMessage").html(`<p>Début du combat !</p>`),
+                    classes: {
+                        "ui-dialog": "positionMessage"
+                    }
+                });
+                setTimeout(this.hideDialog, 2000);
                 this.attackingCharacter.mobility = 0;
                 this.defendingCharacter.mobility = 0;
             }
         });
+    }
+    
+    hideDialog() {
+        $("#informationMessage").dialog("close");
     }
 
     newGame() {
@@ -115,6 +133,9 @@ class Game {
                 Non: () => {
                     $("#newGame").dialog("close");
                 }
+            },
+            classes: {
+                "ui-dialog": "newGame"
             }
         });
     }

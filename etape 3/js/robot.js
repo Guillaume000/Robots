@@ -30,7 +30,7 @@ class Robot {
                 $("#case-" + this.position.a + this.position.b).removeClass(objectSkills.classCSS);
                 $("#case-" + this.position.a + this.position.b).addClass(this.weapon.classCSS);
                 this.weapon = objectSkills;
-                alert(`${this.name} a équipé l'arme ${this.weapon.name}`);
+                this.choosePlayer().append(`<p class="archivedMessage">${this.name} a équipé l'arme ${this.weapon.name}</p>`);
                 return false;
             }
         });
@@ -41,20 +41,29 @@ class Robot {
     }
     
     attackCalculation(target) {
-        alert(`${this.name} attaque avec l'arme ${this.weapon.name} et inflige ${this.weapon.power} points de dégâts`);
+        this.choosePlayer().append(`<p class="archivedMessage">${this.name} attaque avec l'arme ${this.weapon.name} et inflige ${this.weapon.power} points de dégâts</p>`);
+        
         if($(`.${target.classCSS}`).hasClass("shield")) {
             target.lifePoints = target.lifePoints - (this.weapon.power / 2);
             $(`.${target.classCSS}`).removeClass("shield");
-            alert(`${target.name} a absorbé ${this.weapon.power / 2}`);
+            this.choosePlayer().append(`<p class="archivedMessage">${target.name} a absorbé ${this.weapon.power / 2}</p>`);
         } else {
             target.lifePoints = target.lifePoints - this.weapon.power;      
         }  
-        alert(`Il reste ${target.lifePoints} points de vie au ${target.name}`);
+        this.choosePlayer().append(`<p class="archivedMessage">Il reste ${target.lifePoints} points de vie au ${target.name}</p>`);
     }
     
     protect() {
-        alert(`${this.name} absorbera la moitié des dégâts infligés à la prochaine attaque`);
+        this.choosePlayer().append(`<p class="archivedMessage">${this.name} absorbera la moitié des dégâts infligés à la prochaine attaque</p>`);
         $(`.${this.classCSS}`).addClass("shield");
+    }
+    
+    choosePlayer() {
+        let currentPlayer = $('#historic1')
+        if(this.name === "Joueur 2") {
+            currentPlayer = $('#historic2');
+        }
+        return currentPlayer;
     }
 }
 

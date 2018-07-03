@@ -4,11 +4,23 @@ body {
 
 .container {
     background-color: white;
+    width: 1330px;
 }
 
 .player1, .player2 {
     text-align: center;
     line-height: 35px;
+}
+
+.historic {
+    margin-top: 15px;
+    padding: 10px;
+    height: 385px;
+    overflow: auto;
+}
+
+.archivedMessage {
+    margin: 0;
 }
 
 .page-header {
@@ -85,4 +97,16 @@ body {
 
 .mobility:hover {
     background-color: aquamarine;
+}
+
+.attackAction {
+    z-index: 14000 !important;
+}
+
+.positionMessage {
+    z-index: 15000 !important;
+}
+
+.newGame {
+    z-index: 14000 !important;
 }
