@@ -4,39 +4,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Robot Javascript</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Fight Game</title>
+    <link rel="icon" href="images/favicon.ico"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
     <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
-    <body class="container-fluid">
-        <div class="player1 col-md-3">
-            <div class="row" id="namePlayer1"></div>
-            <div class="row" id="lifePoints1"></div>
-            <div class="row" id="weapon1"></div>
-            <div class="row" id="protect1"></div>
-        </div>
-        <div class="col-md-6">
-            <table class="board"></table> 
-            <div id="actionChoice" title="Combat !" hidden>
-                <p>
-                    Que voulez-vous faire ?
-                </p>
+    <body>
+        <div class="container">
+            <div class="page-header">
+                <h1>Fight Game !</h1>
+                <a class="rules btn btn-primary" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    Règles du jeu
+                </a>
+                <div class="collapse" id="collapseExample">
+                    <div class="well">
+                       <ul class="deletePoint">
+                           <li><p>Chacun attaque à son tour.</p></li>
+                           <li><p>Les dégâts infligés dépendent de l’arme possédée par le joueur.</p></li>
+                           <li><p>Le joueur peut choisir d’attaquer ou de se défendre contre le prochain coup.</p></li>
+                           <li><p>Lorsque le joueur se défend, il encaisse 50% de dégâts en moins qu’en temps normal.</p></li>
+                           <li><p>Dès que les points de vie d’un joueur (initialement à 100) tombent à 0 , celui-ci a perdu. Un message s’affiche et la partie est terminée.</p></li>
+                       </ul>
+                    </div>
+                </div>
             </div>
-            <div id="newGame" title="Nouvelle partie ?" hidden>
-                <p>
-                    Voulez-vous faire une nouvelle partie ?
-                </p>
+            <div class="player1 col-md-3">
+                <div id="namePlayer1"></div>
+                <div id="lifePoints1"></div>
+                <div id="weapon1"></div>
+                <div id="protect1"></div>
+                <div id="historic1" class="well historic">Historique :</div>
+            </div>
+            <div class="grid table-responsive col-md-6">
+                <table class="board table"></table> 
+                <div id="actionChoice" title="Combat !" hidden></div>
+                <div id="informationMessage" title="Information" hidden></div>
+                <div id="newGame" title="Nouvelle partie ?" hidden>
+                    <p>Voulez-vous faire une nouvelle partie ?</p>
+                </div>   
+            </div>
+            <div class="player2 col-md-3">
+                <div id="namePlayer2"></div>
+                <div id="lifePoints2"></div>
+                <div id="weapon2"></div>
+                <div id="protect2"></div>
+                <div id="historic2" class="well historic">Historique :</div>
             </div>   
-        </div>
-        <div class="player2 col-md-3">
-            <div class="row" id="namePlayer2"></div>
-            <div class="row" id="lifePoints2"></div>
-            <div class="row" id="weapon2"></div>
-            <div class="row" id="protect2"></div>
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="js/config.js"></script>
         <script src="js/game.js"></script>
         <script src="js/grid.js"></script>

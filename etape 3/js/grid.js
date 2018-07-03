@@ -11,7 +11,7 @@ class Grid {
         const grid = [];
         for(let a = 0; a < this.size.height; a++) {
             grid[a] = [];
-            $('.board').append(`<tr class='' id='row-${a}'>`);
+            $('.board').append(`<tr id='row-${a}'>`);
             for(let b = 0; b < this.size.width; b++) {
                 $(`#row-${a}`).append(`<td class='case' id='case-${a}${b}'>`);
             }
@@ -138,8 +138,8 @@ class Grid {
             protect = $('#protect2');
         }
         
-        namePlayer.load('../js/config.js ' + player.name + player.lifePoints + player.weapon.name + player.classCSS, function() {
-            namePlayer.html(player.name);
+        namePlayer.load('../js/config.js', function() {
+            namePlayer.html(player.name).addClass(player.classCSS);
             lifePointsPlayer.html(`Points de vie : ${player.lifePoints}`);
             weaponPlayer.html(`Arme : ${player.weapon.name} (force : ${player.weapon.power})`);
             if($(`.${player.classCSS}`).hasClass('shield')) {
