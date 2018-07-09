@@ -37,12 +37,8 @@ class Robot {
     }
     
     attack(target) {
-        this.attackCalculation(target);
-    }
-    
-    attackCalculation(target) {
         this.choosePlayer().append(`<p class="archivedMessage">${this.name} attaque avec l'arme ${this.weapon.name} et inflige ${this.weapon.power} points de dégâts</p>`);
-        
+
         if($(`.${target.classCSS}`).hasClass("shield")) {
             target.lifePoints = target.lifePoints - (this.weapon.power / 2);
             $(`.${target.classCSS}`).removeClass("shield");
